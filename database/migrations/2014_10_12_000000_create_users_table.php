@@ -22,6 +22,18 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
+
+            $table->string('apellido_p');
+            $table->string('apellido_M');
+            $table->string('direccion');
+            $table->date('fecha_nacimiento');
+            $table->string('grado');
+            $table->string('nombre_cargo');
+
+            $table->unsignedBigInteger('dependencia_id');
+
+            $table->foreign('dependencia_id')->references('id')->on('dependencias')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
