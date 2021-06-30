@@ -65,4 +65,16 @@ class User extends Authenticatable
     public function dependencia(){
         return $this->belongsTo(Dependencia::class);
     }
+
+    public function adminlte_image(){
+        return 'img/person-circle.svg';
+    }
+
+    public function adminlte_desc(){
+        return 'administrador';
+    }
+
+    public function adminlte_profile_url(){
+        return "user/profile";
+    }
 }

@@ -1,6 +1,6 @@
 <x-app-layout>
 
-
+    esete es el home
 
 </x-app-layout>
 
