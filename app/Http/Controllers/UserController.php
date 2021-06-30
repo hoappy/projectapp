@@ -9,8 +9,8 @@ class UserController extends Controller
 {
     public function index(){
 
-        $usuarios = User::all();
-        return view('userList', compact($usuarios));
+        /*$users = User::where('estado', 1)->get();
+        return view('admin.userlist', compact('users'));*/
 
     }
     //

@@ -67,7 +67,7 @@ class User extends Authenticatable
     }
 
     public function adminlte_image(){
-        return 'img/person-circle.svg';
+        return '/img/person-circle.svg';
     }
 
     public function adminlte_desc(){

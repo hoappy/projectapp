@@ -46,7 +46,7 @@ return [
     */
 
     'logo' => '<b>SERVIU</b> ÑUBLE',
-    'logo_img' => 'img/serviu-logo.jpg',
+    'logo_img' => '/img/serviu-logo.jpg',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -237,27 +237,27 @@ return [
         ],
 
         // Sidebar items:
-        [
-            'text' => 'Home',
-            'url' => 'admin',
-        ],
+        
         [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
+        ],
+        [
+            'text' => 'Dashboard',
+            'route' => 'admin.home',
         ],
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
+        ['header' => 'Administrador'],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text'        => 'Listado Usuarios',
+            'route'  => 'admin.users.index',
+            'icon'        => 'fas fa-users',
         ],
-        ['header' => 'account_settings'],
+        
         [
             'text' => 'profile',
             'url'  => 'admin/settings',
