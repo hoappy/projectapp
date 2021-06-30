@@ -9,8 +9,8 @@ class UserController extends Controller
 {
     public function index(){
 
-        $datos['usarios']=User::paginate(5);
-        return view('userList', $datos);
+        $usuarios = User::all();
+        return view('userList', compact($usuarios));
 
     }
     //
