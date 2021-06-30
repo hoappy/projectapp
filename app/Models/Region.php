@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Region extends Model
 {
     use HasFactory;
+
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
+
+    public function provincia(){
+        return $this->belongsTo(provincia::class);
+    }
 }

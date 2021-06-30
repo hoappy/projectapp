@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class conductor extends Model
 {
     use HasFactory;
+
+    public function conductor(){
+        return $this->belongsTo(conductor::class);
+    }
 }

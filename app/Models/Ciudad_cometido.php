@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ciudad_cometido extends Model
 {
     use HasFactory;
+
+    
+
 }
