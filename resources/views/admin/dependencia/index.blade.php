@@ -9,7 +9,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a class="btn btn-primary btn-sm" href="{{route('admin.users.create')}}">Agregar Usuario</a>
+            <a class="btn btn-primary btn-sm" href="{{route('admin.cometidos.create')}}">Agregar Usuario</a>
         </div>
         <div class="card-body">
             <table class="table table-striped">
@@ -30,24 +30,24 @@
                 </tr>
                 </thead>
                 <!-- <tbody class="text-center">
-                    @foreach ($users as $user)      
+                    @foreach ($cometidos as $cometido)      
                 <tr>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->apellido_p}}</td>
-                    <td>{{$user->apellido_M}}</td>
-                    <td>{{$user->email}}</td>
-                    <td>{{$user->direccion}}</td>
-                    <td>{{$user->grado}}</td>
-                    <td>{{$user->nombre_cargo}}</td>
+                    <td>{{$cometido->name}}</td>
+                    <td>{{$cometido->apellido_p}}</td>
+                    <td>{{$cometido->apellido_M}}</td>
+                    <td>{{$cometido->email}}</td>
+                    <td>{{$cometido->direccion}}</td>
+                    <td>{{$cometido->grado}}</td>
+                    <td>{{$cometido->nombre_cargo}}</td>
 
                     <td width="10px"> 
-                        <a class="btn btn-primary btn-sm" href="{{route('admin.users.show', $user)}}">Detalles</a>
+                        <a class="btn btn-primary btn-sm" href="{{route('admin.cometidos.show', $cometido)}}">Detalles</a>
                     </td>
                     <td width="10px">
-                        <a class="btn btn-success btn-sm" href="{{route('admin.users.edit', $user)}}">Editar</a>
+                        <a class="btn btn-success btn-sm" href="{{route('admin.cometidos.edit', $cometido)}}">Editar</a>
                     </td>
                     <td width="10px">
-                        <form href="{{route('admin.users.destroy', $user)}}" method="POST">
+                        <form href="{{route('admin.cometidos.destroy', $cometido)}}" method="POST">
                             @csrf
                             @method('delete')
                             <button tupe="submit" class="btn btn-danger btn-sm" >Eliminar</button>

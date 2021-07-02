@@ -259,13 +259,14 @@ return [
         ],
         [
             'text'        => 'Cometidos',
+            'route'  => 'admin.cometidos.index',
             'icon'        => 'fas fa-archive',
-            'submenu' => [
-                [
+            /*['submenu' => [
+                
                     'text' => 'Listado',
-                    'route'  => 'admin.cometidos.index',
+                    //aqui iria la ruta
                 ],
-               /* [
+                [
                     'text' => 'Por Aprobar',
                     'route'  => 'admin.cometidos.poraprobar',
                 ],
@@ -276,8 +277,8 @@ return [
                 [
                     'text' => 'Rechazados',
                     'route'  => 'admin.cometidos.rechazado',
-                ],*/
-            ],
+                ],
+            ],*/
         ],
         [
             'text'        => 'Listado Automovil',

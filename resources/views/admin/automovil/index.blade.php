@@ -9,19 +9,14 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a class="btn btn-primary btn-sm" href="{{route('admin.users.create')}}">Agregar Usuario</a>
+            <a class="btn btn-primary btn-sm" href="{{route('admin.automovils.create')}}">Agregar Usuario</a>
         </div>
         <div class="card-body">
             <table class="table table-striped">
                 <thead class="text-center">
                 <tr>
-                    <th scope="col">Nombres</th>
-                    <th scope="col">Apellido Paterno</th>
-                    <th scope="col">Apellido Materno</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Direccion</th>
-                    <th scope="col">Grado</th>
-                    <th scope="col">Cargo</th>
+                    <th scope="col">Marca</th>
+                    
                     
                     <!--<th scope="col">Detalles</th>
                     <th scope="col">Editar</th>
@@ -29,25 +24,21 @@
                     
                 </tr>
                 </thead>
-                <!--<tbody class="text-center">
-                    @foreach ($users as $user)      
+                
+                <tbody class="text-center">
+                    @foreach ($automovils as $automovil)      
                 <tr>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->apellido_p}}</td>
-                    <td>{{$user->apellido_M}}</td>
-                    <td>{{$user->email}}</td>
-                    <td>{{$user->direccion}}</td>
-                    <td>{{$user->grado}}</td>
-                    <td>{{$user->nombre_cargo}}</td>
+                    <td>{{$automovil->marca}}</td>
+                    
 
                     <td width="10px"> 
-                        <a class="btn btn-primary btn-sm" href="{{route('admin.users.show', $user)}}">Detalles</a>
+                        <a class="btn btn-primary btn-sm" href="{{route('admin.automovils.show', $automovil)}}">Detalles</a>
                     </td>
                     <td width="10px">
-                        <a class="btn btn-success btn-sm" href="{{route('admin.users.edit', $user)}}">Editar</a>
+                        <a class="btn btn-success btn-sm" href="{{route('admin.automovils.edit', $automovil)}}">Editar</a>
                     </td>
                     <td width="10px">
-                        <form href="{{route('admin.users.destroy', $user)}}" method="POST">
+                        <form href="{{route('admin.automovils.destroy', $automovil)}}" method="POST">
                             @csrf
                             @method('delete')
                             <button tupe="submit" class="btn btn-danger btn-sm" >Eliminar</button>
