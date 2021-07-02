@@ -1,15 +1,15 @@
 @extends('adminlte::page')
 
-@section('title', 'Listado Usuarios')
+@section('title', 'Listado de Dependencias')
 
 @section('content_header')
-    <h1>Listado Usuarios</h1>
+    <h1>Listado de Dependencias</h1>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a class="btn btn-primary btn-sm" href="{{route('admin.cometidos.create')}}">Agregar Usuario</a>
+            <a class="btn btn-primary btn-sm" href="{{route('admin.dependencias.create')}}">Agregar Dependencia</a>
         </div>
         <div class="card-body">
             <table class="table table-striped">
@@ -23,7 +23,7 @@
                     
                 </tr>
                 </thead>
-                <tbody class="text-center">
+                {{-- <!-- <tbody class="text-center">
                     @foreach ($cometidos as $cometido)      
                 <tr>
                     <td>{{$cometido->name}}</td>
@@ -43,7 +43,7 @@
                     </td>
                     
                 </tr>
-                @endforeach
+                @endforeach --}}
                 
                 
                 </tbody> -->

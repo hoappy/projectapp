@@ -12,30 +12,43 @@
             <h1 class="card-title">Ingrese los Campos Con los datos Requeridos</h1>
         </div>
         <div class="card-body">
-            <!--{!! Form::open(['route' => 'admin.users.store']) !!}
+            {!! Form::open(['route' => 'admin.users.store']) !!}
 
                 <div class="form-group">
-                    {!! form::label('name', 'Nombres') !!}
-                    {!! form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el/los Nombre/s del Usuario a Agregar']) !!}
+                    {!! form::label('tipo_licenca', 'Tipos de licencia') !!}
+                    {!! form::text('tipo_licenca', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el tipo de licencia']) !!}
                 </div>
                 <div class="form-group">
-                    {!! form::label('apellido_p', 'Apellido Paterno') !!}
-                    {!! form::text('apellido_p', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el apellido paterno del Usuario a Agregar']) !!}
+                    {!! form::label('annos_experiencia', 'Años de experiencia') !!}
+                    {!! form::number('annos_experiencia', null, ['class' => 'form-control', 'placeholder' => 'Ingrese los años de experiencia']) !!}
                 </div>
                 <div class="form-group">
-                    {!! form::label('apellido_m', 'Apellido Materno') !!}
-                    {!! form::text('apellido_m', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el apellido materno del Usuario a Agregar']) !!}
+                    {!! form::label('nombre_conductor', 'Nombre del conductor') !!}
+                    {!! form::text('nombre_conductor', null, ['class' => 'form-control', 'placeholder' => 'Ingrese nombre del conductor']) !!}
                 </div>
                 <div class="form-group">
-                    {!! form::label('contrasenna', 'Contrasenna') !!}
-                    {!! form::text('contrasenna', null, ['class' => 'form-control', 'placeholder' => 'Cntrasenna Auto-Generada', 'readonly']) !!}
+                    {!! form::label('apellido_p_conductor', 'Apellido paterno del conductor') !!}
+                    {!! form::text('apellido_p_conductor', null, ['class' => 'form-control', 'placeholder' => 'Ingrese apellido paterno del conductor']) !!}
                 </div>
+                <div class="form-group">
+                    {!! form::label('apellido_m_conductor', 'Apellido materno del conductor') !!}
+                    {!! form::text('apellido_m_conductor', null, ['class' => 'form-control', 'placeholder' => 'Ingrese apellido materno del conductor']) !!}
+                </div>
+                <div class="form-group">
+                    {!! form::label('telefono_conductor', 'Telefono del conductor') !!}
+                    {!! form::text('telefono_conductor', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el telefono del conductor']) !!}
+                </div>
+                <div class="form-group">
+                    {!! form::label('direccion_conductor', 'Direccion del conductor') !!}
+                    {!! form::text('direccion_conductor', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la direccion del conductor']) !!}
+                </div>
+                
 
                 {!! Form::submit('Agregar Usuario', ['class' => 'btn btn-primary']) !!}
 
-            {!! Form::close() !!}-->
+            {!! Form::close() !!}
 
-            <x-guest-layout>
+            {{-- <x-guest-layout>
                 <x-jet-authentication-card>
                     <x-slot name="logo">
                         
@@ -128,7 +141,7 @@
                         </div>
                     </form>
                 </x-jet-authentication-card>
-            </x-guest-layout>
+            </x-guest-layout> --}}
 
         </div>
     </div>

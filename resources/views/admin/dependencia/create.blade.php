@@ -12,30 +12,23 @@
             <h1 class="card-title">Ingrese los Campos Con los datos Requeridos</h1>
         </div>
         <div class="card-body">
-            <!--{!! Form::open(['route' => 'admin.users.store']) !!}
+            {!! Form::open(['route' => 'admin.dependencias.store']) !!}
 
                 <div class="form-group">
-                    {!! form::label('name', 'Nombres') !!}
-                    {!! form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el/los Nombre/s del Usuario a Agregar']) !!}
+                    {!! form::label('nombre_dependencia', 'Nombre de dependencia') !!}
+                    {!! form::text('nombre_dependencia', null, ['class' => 'form-control', 'placeholder' => 'Ingrese nombre de la dependencia']) !!}
                 </div>
                 <div class="form-group">
-                    {!! form::label('apellido_p', 'Apellido Paterno') !!}
-                    {!! form::text('apellido_p', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el apellido paterno del Usuario a Agregar']) !!}
+                    {!! form::label('direccion_dependencia', 'Direccion de dependencia') !!}
+                    {!! form::text('direccion_dependencia', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la direccion de la dependencia']) !!}
                 </div>
-                <div class="form-group">
-                    {!! form::label('apellido_m', 'Apellido Materno') !!}
-                    {!! form::text('apellido_m', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el apellido materno del Usuario a Agregar']) !!}
-                </div>
-                <div class="form-group">
-                    {!! form::label('contrasenna', 'Contrasenna') !!}
-                    {!! form::text('contrasenna', null, ['class' => 'form-control', 'placeholder' => 'Cntrasenna Auto-Generada', 'readonly']) !!}
-                </div>
+                
 
                 {!! Form::submit('Agregar Usuario', ['class' => 'btn btn-primary']) !!}
 
-            {!! Form::close() !!}-->
+            {!! Form::close() !!}
 
-            <x-guest-layout>
+            {{-- <x-guest-layout>
                 <x-jet-authentication-card>
                     <x-slot name="logo">
                         
@@ -128,7 +121,7 @@
                         </div>
                     </form>
                 </x-jet-authentication-card>
-            </x-guest-layout>
+            </x-guest-layout> --}}
 
         </div>
     </div>

@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Agregar Usuario')
+@section('title', 'Agregar Cometido')
 
 @section('content_header')
-    <h1>Agregar Usuario</h1>
+    <h1>Agregar Cometido</h1>
 @stop
 
 @section('content')
@@ -12,30 +12,46 @@
             <h1 class="card-title">Ingrese los Campos Con los datos Requeridos</h1>
         </div>
         <div class="card-body">
-            <!--{!! Form::open(['route' => 'admin.users.store']) !!}
+            {!! Form::open(['route' => 'admin.cometidos.store']) !!}
 
                 <div class="form-group">
-                    {!! form::label('name', 'Nombres') !!}
-                    {!! form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el/los Nombre/s del Usuario a Agregar']) !!}
+                    {!! form::label('fecha_emicion', 'Fecha de emicion') !!}
+                    {!! form::date('fecha_emicion', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la fecha de emision']) !!}
                 </div>
                 <div class="form-group">
-                    {!! form::label('apellido_p', 'Apellido Paterno') !!}
-                    {!! form::text('apellido_p', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el apellido paterno del Usuario a Agregar']) !!}
+                    {!! form::label('fecha_inicio', 'Fecha de inicio') !!}
+                    {!! form::date('fecha_inicio', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la fecha de inicio']) !!}
                 </div>
                 <div class="form-group">
-                    {!! form::label('apellido_m', 'Apellido Materno') !!}
-                    {!! form::text('apellido_m', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el apellido materno del Usuario a Agregar']) !!}
+                    {!! form::label('fecha_termino', 'Fecha de termino') !!}
+                    {!! form::date('fecha_termino', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la fecha de termino']) !!}
                 </div>
                 <div class="form-group">
-                    {!! form::label('contrasenna', 'Contrasenna') !!}
-                    {!! form::text('contrasenna', null, ['class' => 'form-control', 'placeholder' => 'Cntrasenna Auto-Generada', 'readonly']) !!}
+                    {!! form::label('dias_c_pernoctar', 'Dias con pernoctar') !!}
+                    {!! form::number('dias_c_pernoctar', null, ['class' => 'form-control', 'placeholder' => 'Ingrese cantidad de dias']) !!}
+                </div>
+                <div class="form-group">
+                    {!! form::label('dias_s_pernoctar', 'Dias sin pernoctar') !!}
+                    {!! form::number('dias_s_pernoctar', null, ['class' => 'form-control', 'placeholder' => 'Ingrese cantidad de dias']) !!}
+                </div>
+                <div class="form-group">
+                    {!! form::label('tipo_trasnporte_ida', 'Transporte de ida') !!}
+                    {!! form::number('tipo_transporte_ida', null, ['class' => 'form-control', 'placeholder' => 'Ingrese transporte de ida']) !!}
+                </div>
+                <div class="form-group">
+                    {!! form::label('tipo_transporte_regreso', 'Transporte de regreso') !!}
+                    {!! form::number('tipo_transporte_regreso', null, ['class' => 'form-control', 'placeholder' => 'Ingrese transporte de regreso']) !!}
+                </div>
+                <div class="form-group">
+                    {!! form::label('item_presupuestario_id', 'Item presupuestario') !!}
+                    {!! form::number('item_presupuestario_id', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el item presupuestario']) !!}
                 </div>
 
-                {!! Form::submit('Agregar Usuario', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Agregar Cometido', ['class' => 'btn btn-primary']) !!}
 
-            {!! Form::close() !!}-->
+            {!! Form::close() !!}
 
-            <x-guest-layout>
+            {{-- <x-guest-layout>
                 <x-jet-authentication-card>
                     <x-slot name="logo">
                         
@@ -128,7 +144,7 @@
                         </div>
                     </form>
                 </x-jet-authentication-card>
-            </x-guest-layout>
+            </x-guest-layout> --}}
 
         </div>
     </div>

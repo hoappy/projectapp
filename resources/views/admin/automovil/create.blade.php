@@ -12,30 +12,34 @@
             <h1 class="card-title">Ingrese los Campos Con los datos Requeridos</h1>
         </div>
         <div class="card-body">
-            <!--{!! Form::open(['route' => 'admin.users.store']) !!}
+            {!! Form::open(['route' => 'admin.automovils.store']) !!}
 
                 <div class="form-group">
-                    {!! form::label('name', 'Nombres') !!}
-                    {!! form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el/los Nombre/s del Usuario a Agregar']) !!}
+                    {!! form::label('modelo', 'Modelo') !!}
+                    {!! form::text('modelo', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el modelo del vehiculo']) !!}
                 </div>
                 <div class="form-group">
-                    {!! form::label('apellido_p', 'Apellido Paterno') !!}
-                    {!! form::text('apellido_p', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el apellido paterno del Usuario a Agregar']) !!}
+                    {!! form::label('patente', 'Patente') !!}
+                    {!! form::text('patente', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la patente del vehiculo']) !!}
                 </div>
                 <div class="form-group">
-                    {!! form::label('apellido_m', 'Apellido Materno') !!}
-                    {!! form::text('apellido_m', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el apellido materno del Usuario a Agregar']) !!}
+                    {!! form::label('anno', 'Año') !!}
+                    {!! form::number('anno', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el ano del vehiculo']) !!}
                 </div>
                 <div class="form-group">
-                    {!! form::label('contrasenna', 'Contrasenna') !!}
-                    {!! form::text('contrasenna', null, ['class' => 'form-control', 'placeholder' => 'Cntrasenna Auto-Generada', 'readonly']) !!}
+                    {!! form::label('tipo_automovil', 'Tipo automovil') !!}
+                    {!! form::text('tipo_automovil', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el tipo de vechiculo']) !!}
+                </div>
+                <div class="form-group">
+                    {!! form::label('marca_automovil', 'Marca automovil') !!}
+                    {!! form::text('marca_automovil', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la marca del automovil']) !!}
                 </div>
 
-                {!! Form::submit('Agregar Usuario', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Agregar Automovil', ['class' => 'btn btn-primary']) !!}
 
-            {!! Form::close() !!}-->
+            {!! Form::close() !!}
 
-            <x-guest-layout>
+            {{-- <x-guest-layout>
                 <x-jet-authentication-card>
                     <x-slot name="logo">
                         
@@ -128,7 +132,7 @@
                         </div>
                     </form>
                 </x-jet-authentication-card>
-            </x-guest-layout>
+            </x-guest-layout> --}}
 
         </div>
     </div>

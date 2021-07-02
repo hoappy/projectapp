@@ -1,15 +1,15 @@
 @extends('adminlte::page')
 
-@section('title', 'Listado Usuarios')
+@section('title', 'Listado de Automoviles')
 
 @section('content_header')
-    <h1>Listado Usuarios</h1>
+    <h1>Listado de Automoviles</h1>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a class="btn btn-primary btn-sm" href="{{route('admin.automovils.create')}}">Agregar Usuario</a>
+            <a class="btn btn-primary btn-sm" href="{{route('admin.automovils.create')}}">Agregar Automovil</a>
         </div>
         <div class="card-body">
             <table class="table table-striped">
