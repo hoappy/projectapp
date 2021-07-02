@@ -3,13 +3,13 @@
 @section('title', 'Listado Cometidos')
 
 @section('content_header')
-    <h1>Listado Usuarios</h1>
+    <h1>Listado de Cometidos</h1>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a class="btn btn-primary btn-sm" href="{{route('admin.cometidos.create')}}">Agregar Usuario</a>
+            <a class="btn btn-primary btn-sm" href="{{route('admin.cometidos.create')}}">Agregar Cometido</a>
         </div>
         <div class="card-body">
             <table class="table table-striped">
