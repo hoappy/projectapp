@@ -20,28 +20,7 @@ class CometidoController extends Controller
         return view('admin.cometido.index', compact('cometidos'));
     }
 
-    public function poraprobar()
-    {
-        $cometidos = Cometido::all();
-
-        return view('admin.cometido.index', compact('cometidos'));
-    }
-
-    public function aprobado()
-    {
-        $cometidos = Cometido::all();
-
-        return view('admin.cometido.index', compact('cometidos'));
-    }
-
-    public function rechazado()
-    {
-        $cometidos = Cometido::all();
-
-        return view('admin.cometido.index', compact('cometidos'));
-    }
-
-    /**
+        /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Automovil;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Validator;
+
 class automovilController extends Controller
 {
     /**
@@ -13,6 +15,7 @@ class automovilController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $automovils = Automovil::all();
@@ -38,7 +41,22 @@ class automovilController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Validator::validate([
+            'modelo' => ['required', 'string', 'max:255'],
+            'patente' => ['required', 'string', 'max:255'],
+            'anno' => ['required', 'integer', 'max:11'],
+            'tipo_automovil' => ['required', 'string', 'max:255'],
+            'marca_automovil' => ['required', 'string', 'max:255'],
+            'estado' => ['required', 'integer'],
+            
+        ]);
+
+        Automovil::create($request->all());
+
+        $automovils = Automovil::all();
+
+        return redirect()->route('admin.automovil.index', $automovils);
+
     }
 
     /**

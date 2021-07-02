@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Ciudad_cometido;
 use Illuminate\Http\Request;
 
 class Ciudad_cometidoController extends Controller
@@ -14,7 +15,9 @@ class Ciudad_cometidoController extends Controller
      */
     public function index()
     {
-        //
+        $ciudad_cometidos = Ciudad_cometido::all();
+
+        return view('admin.ciudad_cometido.index', compact('ciudad_cometidos'));
     }
 
     /**
@@ -24,7 +27,7 @@ class Ciudad_cometidoController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.ciudad_cometido.create');
     }
 
     /**
@@ -46,7 +49,7 @@ class Ciudad_cometidoController extends Controller
      */
     public function show($id)
     {
-        //
+    return view('admin.ciudad_cometido.show'/*, compact('ciudad_cometidos')*/);
     }
 
     /**
@@ -57,7 +60,7 @@ class Ciudad_cometidoController extends Controller
      */
     public function edit($id)
     {
-        //
+    return view('admin.ciudad_cometido.edit'/*, compact('ciudad_cometidos')*/);
     }
 
     /**

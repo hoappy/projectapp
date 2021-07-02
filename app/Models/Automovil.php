@@ -9,6 +9,16 @@ class Automovil extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'modelo',
+        'patente',
+        'anno',
+        'tipo_automovil',
+        'marca_automovil',
+        'estado',
+        
+    ];
+
     public function posts(){
         return $this->hasMany(Post::class);
     }

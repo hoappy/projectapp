@@ -9,6 +9,13 @@ class Cometido extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name', //example
+        
+
+    ];
+
+
     public function posts(){
         return $this->hasMany(Post::class);
     }
