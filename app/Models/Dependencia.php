@@ -9,6 +9,13 @@ class Dependencia extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'nombre_dependencia',
+        'direccion_dependencia',
+        'estado',
+        
+    ];
+
     public function posts(){
         return $this->hasMany(Post::class);
     }
