@@ -29,7 +29,7 @@
                     
                 </tr>
                 </thead>
-                <tbody class="text-center">
+                <!-- <tbody class="text-center">
                     @foreach ($users as $user)      
                 <tr>
                     <td>{{$user->name}}</td>
@@ -56,9 +56,9 @@
                     
                 </tr>
                 @endforeach
+                 
                 
-                
-                </tbody>
+                </tbody>-->
             </table>
         </div>
     </div>

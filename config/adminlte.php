@@ -257,6 +257,43 @@ return [
             'route'  => 'admin.users.index',
             'icon'        => 'fas fa-users',
         ],
+        [
+            'text'        => 'Cometidos',
+            'icon'        => 'fas fa-archive',
+            'submenu' => [
+                [
+                    'text' => 'Listado',
+                    'route'  => 'admin.cometidos.index',
+                ],
+               /* [
+                    'text' => 'Por Aprobar',
+                    'route'  => 'admin.cometidos.poraprobar',
+                ],
+                [
+                    'text' => 'Aprobados',
+                    'route'  => 'admin.cometidos.aprobado',
+                ],
+                [
+                    'text' => 'Rechazados',
+                    'route'  => 'admin.cometidos.rechazado',
+                ],*/
+            ],
+        ],
+        [
+            'text'        => 'Listado Automovil',
+            'route'  => 'admin.automovils.index',
+            'icon'        => 'fas fa-car',
+        ],
+        [
+            'text'        => 'Listado Conductores',
+            'route'  => 'admin.conductors.index',
+            'icon'        => 'fas fa-user-shield',
+        ],
+        [
+            'text'        => 'Listado Dependencias',
+            'route'  => 'admin.dependencias.index',
+            'icon'        => 'fas fa-building',
+        ],
         
         [
             'text' => 'profile',
