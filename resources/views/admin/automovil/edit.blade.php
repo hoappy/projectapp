@@ -12,7 +12,33 @@
             <h1 class="card-title">Bienvenido</h1>
         </div>
         <div class="card-body">
-            <p>Este es el panel de administracion donde podra gestionar todos los ambitos del sistema de cometidos</p>
+            {!! Form::model($automovil, ['route' => ['admin.automovils.update', $automovil], 'method' => 'put']) !!}
+
+                <div class="form-group">
+                    {!! form::label('modelo', 'Modelo') !!}
+                    {!! form::text('modelo', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el modelo del vehiculo']) !!}
+                </div>
+                <div class="form-group">
+                    {!! form::label('patente', 'Patente') !!}
+                    {!! form::text('patente', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la patente del vehiculo']) !!}
+                </div>
+                <div class="form-group">
+                    {!! form::label('anno', 'Año') !!}
+                    {!! form::number('anno', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el ano del vehiculo']) !!}
+                </div>
+                <div class="form-group">
+                    {!! form::label('tipo_automovil', 'Tipo automovil') !!}
+                    {!! form::text('tipo_automovil', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el tipo de vechiculo']) !!}
+                </div>
+                <div class="form-group">
+                    {!! form::label('marca_automovil', 'Marca automovil') !!}
+                    {!! form::text('marca_automovil', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la marca del automovil']) !!}
+                </div>
+
+                {!! Form::submit('Modificar Automovil', ['class' => 'btn btn-primary']) !!}
+
+            {!! Form::close() !!}
+
         </div>
     </div>
     
@@ -23,5 +49,15 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
-@stop
+    <script src="{{'/vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js'}}"></script>
+
+    <script>
+        $(document).ready( function() {
+        $("#name").stringToSlug({
+            setEvents: 'keyup keydown blur',
+            getPut: '#contrasenna',
+            space: '-'
+  });
+});
+    </script>
+@endsection

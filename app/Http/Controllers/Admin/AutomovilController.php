@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Automovil;
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\Validator;
-
 class automovilController extends Controller
 {
     /**
@@ -41,22 +39,22 @@ class automovilController extends Controller
      */
     public function store(Request $request)
     {
-        Validator::validate([
+        $request->validate([
             'modelo' => ['required', 'string', 'max:255'],
             'patente' => ['required', 'string', 'max:255'],
-            'anno' => ['required', 'integer', 'max:11'],
+            'anno' => ['required', 'integer'],
             'tipo_automovil' => ['required', 'string', 'max:255'],
             'marca_automovil' => ['required', 'string', 'max:255'],
-            'estado' => ['required', 'integer'],
-            
+                       
         ]);
 
         Automovil::create($request->all());
 
-        $automovils = Automovil::all();
+        //$automovils = Automovil::all();
 
-        return redirect()->route('admin.automovil.index', $automovils);
+        return redirect()->route('admin.automovils.index'/*, $automovils*/);
 
+        //return $request->all();
     }
 
     /**
@@ -76,9 +74,12 @@ class automovilController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Automovil $automovil)
     {
-    return view('admin.automovil.edit'/*, compact('automovils')*/);
+
+        //$automovil = Automovil::find($id);
+
+        return view('admin.automovil.edit', compact('automovil'));
     }
 
     /**
@@ -88,9 +89,20 @@ class automovilController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Automovil $automovil)
     {
-        //
+        $request->validate([
+            'modelo' => ['required', 'string', 'max:255'],
+            'patente' => ['required', 'string', 'max:255'],
+            'anno' => ['required', 'integer'],
+            'tipo_automovil' => ['required', 'string', 'max:255'],
+            'marca_automovil' => ['required', 'string', 'max:255'],
+                       
+        ]);
+
+        $automovil->update($request->all());
+
+        return redirect()->route('admin.automovils.edit', $automovil);
     }
 
     /**

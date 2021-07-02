@@ -15,8 +15,11 @@
             <table class="table table-striped">
                 <thead class="text-center">
                 <tr>
-                    <th scope="col">Marca</th>
-                    
+                    <th scope="col">Modelo Automovil</th>
+                    <th scope="col">Marca Automovil</th>
+                    <th scope="col">Anno</th>
+                    <th scope="col">Tipo Automovil</th>
+                    <th scope="col">Patente</th>
                     
                     <!--<th scope="col">Detalles</th>
                     <th scope="col">Editar</th>
@@ -28,7 +31,11 @@
                 <tbody class="text-center">
                     @foreach ($automovils as $automovil)      
                 <tr>
-                    <td>{{$automovil->marca}}</td>
+                    <td>{{$automovil->modelo}}</td>
+                    <td>{{$automovil->marca_automovil}}</td>
+                    <td>{{$automovil->anno}}</td>
+                    <td>{{$automovil->tipo_automovil}}</td>
+                    <td>{{$automovil->patente}}</td>
                     
 
                     <td width="10px"> 
