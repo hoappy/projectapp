@@ -9,6 +9,14 @@ class Item_presupuestario extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'nombre_item_presupuestario',
+        'descripccion',
+        'valor',
+        'estado',
+        
+    ];
+
     public function posts(){
         return $this->hasMany(Post::class);
     }

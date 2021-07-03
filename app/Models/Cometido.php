@@ -10,7 +10,20 @@ class Cometido extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', //example
+        'fecha_emicion',
+        'fecha_inicio',
+        'fecha_termino',
+        'objetivo',
+        'dias_c_pernoctar',
+        'dias_s_pernoctar',
+        'tipo_transporte_ida',
+        'tipo_transporte_regreso',
+        'progreso',
+        'estado',
+        'item_presipuestario_id',
+        'user_solicita_id',
+        'user_jefe_id',
+        'user_aprueba_id',
         
 
     ];
