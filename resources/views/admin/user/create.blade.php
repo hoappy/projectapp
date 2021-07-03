@@ -24,17 +24,26 @@
 
                 </div>
                 <div class="form-group">
-                    {!! form::label('apellido_p', 'Apellido Paterno') !!}
-                    {!! form::date('apellido_p', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el apellido paterno del Usuario a Agregar']) !!}
+                    {!! form::label('apellido_P', 'Apellido Paterno') !!}
+                    {!! form::text('apellido_P', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el apellido paterno del Usuario a Agregar']) !!}
 
-                    @error('apellido_p')
+                    @error('apellido_P')
                         <span class="text-danger">{{$message}}</span>
                     @enderror
                     
                 </div>
                 <div class="form-group">
-                    {!! form::label('apellido_m', 'Apellido Materno') !!}
-                    {!! form::number('apellido_m', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el apellido materno del Usuario a Agregar']) !!}
+                    {!! form::label('apellido_M', 'Apellido Materno') !!}
+                    {!! form::text('apellido_M', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el apellido materno del Usuario a Agregar']) !!}
+
+                    @error('apellido_M')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
+
+                </div>
+                <div class="form-group">
+                    {!! form::label('email', 'Correo Electronico') !!}
+                    {!! form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el correo electronivo del Usuario a Agregar']) !!}
 
                     @error('apellido_m')
                         <span class="text-danger">{{$message}}</span>
@@ -42,18 +51,27 @@
 
                 </div>
                 <div class="form-group">
-                    {!! form::label('contrasenna', 'Contrasenna') !!}
-                    {!! form::text('contrasenna', null, ['class' => 'form-control', 'placeholder' => 'Contrasenna Auto-Generada', 'readonly']) !!}
+                    {!! form::label('password', 'Contrasenna') !!}
+                    {!! form::text('password', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la contrasenna']) !!}
 
-                    @error('contrasenna')
+                    @error('password')
                         <span class="text-danger">{{$message}}</span>
                     @enderror
 
                 </div>
+                <div class="form-group">
+                    {!! form::label('password_confirmation', 'Contrasenna') !!}
+                    {!! form::text('password_confirmation', null, ['class' => 'form-control', 'placeholder' => 'Re-Ingrese la contrasenna']) !!}
+
+                    @error('password_confirmation')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
+
+                </di>
 
                 <div class="form-group">
                     {!! form::label('dependencia_id', 'Dependencia') !!}
-                    {!! form::select('dependencia_id', $dependencias, null, ['class' => 'form-control', 'placeholder' => 'Seleccione Dependencia', 'readonly']) !!}
+                    {!! form::select('dependencia_id', $dependencias, null, ['class' => 'form-control', 'placeholder' => 'Seleccione Dependencia']) !!}
 
                     @error('dependencia_id')
                         <span class="text-danger">{{$message}}</span>
@@ -81,6 +99,26 @@
 
                 </div>
 
+                <div class="form-group">
+                    {!! form::label('grado', 'Grado') !!}
+                    {!! form::text('grado', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el grado del Usuario a Agregar']) !!}
+
+                    @error('grado')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
+
+                </div>
+
+                <div class="form-group">
+                    {!! form::label('nombre_cargo', 'Cargo') !!}
+                    {!! form::text('nombre_cargo', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el nombre del cargo del Usuario a Agregar']) !!}
+
+                    @error('nombre_cargo')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
+
+                </div>
+
                 {!! Form::submit('Agregar Usuario', ['class' => 'btn btn-primary']) !!}
 
             {!! Form::close() !!}
@@ -92,16 +130,3 @@
     
 @stop
 
-@section('js')
-    <script src="{{'/vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js'}}"></script>
-
-    <script>
-        $(document).ready( function() {
-        $("#name").stringToSlug({
-            setEvents: 'keyup keydown blur',
-            getPut: '#contrasenna',
-            space: '-'
-  });
-});
-    </script>
-@endsection
