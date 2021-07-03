@@ -70,7 +70,7 @@ class ConductorController extends Controller
      */
     public function show($id)
     {
-    return view('admin.conductor.show'/*, compact('conductors')*/);
+    return view('admin.conductor.show', compact('conductors'));
     }
 
     /**
@@ -79,7 +79,7 @@ class ConductorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Conductor $conductor)
     {
     return view('admin.conductor.edit', compact('conductor'));
     }

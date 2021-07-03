@@ -19,7 +19,7 @@
         </div>
         <div class="card-body">
             <div class="card-header">
-                <h1>Automviles Activos</h1>
+                <h4>Automoviles Activos</h4>
             </div>    
             <table class="table table-striped">
                 <thead class="text-center">
@@ -30,9 +30,9 @@
                     <th scope="col">Tipo Automovil</th>
                     <th scope="col">Patente</th>
                     
-                    <!--<th scope="col">Detalles</th>
+                    <th scope="col">Detalles</th>
                     <th scope="col">Editar</th>
-                    <th scope="col">Eliminar</th>-->
+                    <th scope="col">Eliminar</th>
                     
                 </tr>
                 </thead>
@@ -77,7 +77,7 @@
         </div>
         <div class="card-body">
             <div class="card-header">
-                <h1>Automviles Inactivos</h1>
+                <h4>Automviles Inactivos</h4>
             </div> 
             <table class="table table-striped">
                 <thead class="text-center">

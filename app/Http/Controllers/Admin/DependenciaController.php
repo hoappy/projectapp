@@ -38,7 +38,18 @@ class DependenciaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre_dependencia' => ['required', 'string', 'max:255'],
+            'direccion_dependencia' => ['required', 'string', 'max:255'],        
+        ]);
+
+        Dependencia::create($request->all());
+
+        //$automovils = Automovil::all();
+
+        return redirect()->route('admin.dependencias.index'/*, $automovils*/)->with('info', 'La dependencia se creo correctamente');
+
+        //return $request->all();
     }
 
     /**
@@ -49,7 +60,7 @@ class DependenciaController extends Controller
      */
     public function show($id)
     {
-    return view('admin.dependencia.show'/*, compact('dependencias')*/);
+    return view('admin.dependencia.show', compact('dependencias'));
     }
 
     /**
@@ -72,7 +83,19 @@ class DependenciaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nombre_dependencia' => ['required', 'string', 'max:255'],
+            'direccion_dependencia' => ['required', 'string', 'max:255'],        
+        ]);
+
+        $dependencia->update($request->all());
+
+        //$automovils = Automovil::all();
+
+        return redirect()->route('admin.dependecias.index')->with('info', 'la dependencia se actualizo correctamente');
+
+
+        //return $request->all();
     }
 
     /**
@@ -84,5 +107,23 @@ class DependenciaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function desactivar(Request $request)
+    {
+        $automovil = Dependencia::findOrFail($request->id);
+        $automovil->estado = '0';
+        $automovil->save();
+        
+        return redirect()->route('admin.dependencias.index')->with('info', 'La dependencia se desactivo correctamente');
+    }
+
+    public function activar(Request $request)
+    {
+        $automovil = Dependencia::findOrFail($request->id);
+        $automovil->estado = '1';
+        $automovil->save();
+        
+        return redirect()->route('admin.dependecias.index')->with('info', 'La dependencia se activo correctamente');
     }
 }

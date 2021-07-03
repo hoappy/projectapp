@@ -20,19 +20,34 @@
             <table class="table table-striped">
                 <thead class="text-center">
                 <tr>
-                    <th scope="col">Nombres</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido Paterno</th>
+                    <th scope="col">Apellido Materno</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Tipo de Licencia</th>
+                    <th scope="col">Años de experiencia</th>
                     
                     
-                    <!--<th scope="col">Detalles</th>
+                    <th scope="col">Detalles</th>
                     <th scope="col">Editar</th>
-                    <th scope="col">Eliminar</th>-->
+                    <th scope="col">Eliminar</th>
                     
                 </tr>
                 </thead>
-                <!-- <tbody class="text-center">
+                 <tbody class="text-center">
                     @foreach ($conductors as $conductor)      
                 <tr>
-                    <td>{{$conductor->name}}</td>
+                    <td>{{$conductor->nombre_conductor}}</td>
+                    <td>{{$conductor->apellido_p_conductor}}</td>
+                    <td>{{$conductor->apellido_m_conductor}}</td>
+                    <td>{{$conductor->telefono_conductor}}</td>
+                    <td>{{$conductor->tipo_licencia}}</td>
+                    <td>{{$conductor->annos_experiencia}}</td>
+
+
+
+
+
                     
 
                     <td width="10px"> 
@@ -53,7 +68,7 @@
                 @endforeach
                  
                 
-                </tbody>-->
+                </tbody>
             </table>
         </div>
     </div>

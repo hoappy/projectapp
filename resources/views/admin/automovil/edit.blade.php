@@ -1,15 +1,14 @@
 @extends('adminlte::page')
 
-@section('title', 'Editar Usuario')
+@section('title', 'Editar Automovil')
 
 @section('content_header')
-    <h1>Editar Usuario</h1>
+    <h1>Editar Automovil</h1>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h1 class="card-title">Bienvenido</h1>
         </div>
         <div class="card-body">
             {!! Form::model($automovil, ['route' => ['admin.automovils.update', $automovil], 'method' => 'put']) !!}
