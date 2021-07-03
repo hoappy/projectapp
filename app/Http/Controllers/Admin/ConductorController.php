@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Conductor;
+use App\Models\Automovil;
 use Illuminate\Http\Request;
 
 class ConductorController extends Controller
@@ -27,7 +28,9 @@ class ConductorController extends Controller
      */
     public function create()
     {
-        return view('admin.conductor.create');
+        $automovil = Automovil::pluck('patente', 'id');
+        return view('admin.conductor.create', compact('automovil'));
+        
     }
 
     /**
@@ -38,7 +41,25 @@ class ConductorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'tipo_licencia' => ['required', 'string','max:255'],
+            'annos_experiencia' => ['required','integer'],
+            'nombre_conductor' => ['required','string','max:255'],
+            'apellido_p_conductor' => ['required','string','max:255'],
+            'apellido_m_conductor' => ['required','string','max:255'],
+            'telefono_conductor' => ['required', 'integer'],
+            'direccion_conductor' => ['required','string','max:255'],
+            'automovil_id' => ['required', 'integer'],
+                       
+        ]);
+
+        Conductor::create($request->all());
+
+        //$automovils = Automovil::all();
+
+        return redirect()->route('admin.conductors.index'/*, $automovils*/)->with('info', 'El conductor se creo correctamente');
+
+        //return $request->all();
     }
 
     /**
@@ -60,7 +81,7 @@ class ConductorController extends Controller
      */
     public function edit($id)
     {
-    return view('admin.conductor.edit'/*, compact('conductors')*/);
+    return view('admin.conductor.edit', compact('conductor'));
     }
 
     /**
@@ -70,9 +91,24 @@ class ConductorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Automovil $automovil)
     {
-        //
+        $request->validate([
+            'tipo_licencia' => ['required', 'string','max:255'],
+            'annos_experiencia' => ['required','integer'],
+            'nombre_conductor' => ['required','string','max:255'],
+            'apellido_p_conductor' => ['required','string','max:255'],
+            'apellido_m_conductor' => ['required','string','max:255'],
+            'telefono_conductor' => ['required', 'integer'],
+            'direccion_conductor' => ['required','string','max:255'],
+            'automovil_id' => ['required', 'integer'],
+                       
+        ]);
+
+        $conductor->update($request->all());
+
+        //return redirect()->route('admin.automovils.edit', $automovil);
+        return redirect()->route('admin.conductors.index')->with('info', 'El conductor se actualizo correctamente');
     }
 
     /**
@@ -84,5 +120,23 @@ class ConductorController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function desactivar(Request $request)
+    {
+        $conductor = Conductor::findOrFail($request->id);
+        $conductor->estado = '0';
+        $conductor->save();
+        
+        return redirect()->route('admin.conductors.index')->with('info', 'El conductor se desactivo correctamente');
+    }
+
+    public function activar(Request $request)
+    {
+        $conductor = Conductor::findOrFail($request->id);
+        $conductor->estado = '1';
+        $conductor->save();
+        
+        return redirect()->route('admin.conductors.index')->with('info', 'El conductor se activo correctamente');
     }
 }

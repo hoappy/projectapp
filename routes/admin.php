@@ -19,6 +19,8 @@ Route::put('automovils/{id}/desactivar', [AutomovilController::class, 'desactiva
 Route::put('automovils/{id}/activar', [AutomovilController::class, 'activar'])->name('admin.automovils.activar');
 
 Route::resource('conductors', ConductorController::class)->names('admin.conductors');
+Route::put('conductors/{id}/desactivar', [ConductorController::class, 'desactivar'])->name('admin.conductors.desactivar');
+Route::put('conductors/{id}/activar', [ConductorController::class, 'activar'])->name('admin.conductors.activar');
 
 Route::resource('dependencias', DependenciaController::class)->names('admin.dependencias');
 

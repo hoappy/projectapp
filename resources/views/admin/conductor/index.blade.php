@@ -9,7 +9,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a class="btn btn-primary btn-sm" href="{{route('admin.users.create')}}">Agregar Conductor</a>
+            <a class="btn btn-primary btn-sm" href="{{route('admin.conductors.create')}}">Agregar Conductor</a>
         </div>
         <div class="card-body">
             <table class="table table-striped">
