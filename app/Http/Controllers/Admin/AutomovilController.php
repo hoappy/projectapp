@@ -44,8 +44,11 @@ class automovilController extends Controller
             'patente' =>'required|unique:automovils',
             'anno' => ['required', 'integer'],
             'tipo_automovil' => ['required', 'string', 'max:255'],
-            'marca_automovil' => ['required', 'string', 'max:255'],
-                       
+            'marca_automovil' => ['required', 'string', 'max:255'],        
+        ],
+        [
+            'required' => 'Esque campo no puede quedar Vacio',
+            'patente.unique' => 'Ya existe un automovil con dicha patente'
         ]);
 
         Automovil::create($request->all());
@@ -96,8 +99,11 @@ class automovilController extends Controller
             'patente' =>"required|unique:automovils,patente,$automovil->id",
             'anno' => ['required', 'integer'],
             'tipo_automovil' => ['required', 'string', 'max:255'],
-            'marca_automovil' => ['required', 'string', 'max:255'],
-                       
+            'marca_automovil' => ['required', 'string', 'max:255'],          
+        ],
+        [
+            'required' => 'Esque campo no puede quedar Vacio',
+            'patente.unique' => 'Ya existe un automovil con dicha patente'
         ]);
 
         $automovil->update($request->all());

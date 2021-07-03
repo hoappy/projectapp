@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Sistema cometido | SERVIU NUBLE'),
+    'name' => env('APP_NAME', 'Sistema Cometido | SERVIU NUBLE'),
 
     /*
     |--------------------------------------------------------------------------

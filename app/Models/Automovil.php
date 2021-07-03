@@ -19,6 +19,15 @@ class Automovil extends Model
         
     ];
 
+    public function messages()
+    {
+        return [
+            'modelo.required' => 'A title is required',
+            'patente.required' => 'A message is required',
+            'unique.patente' => 'Ya existe una Automovil con esta Patente',
+        ];
+    }   
+
     /*public function getRouteKeyName()
     {
         return "patente";
