@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Dependencia;
 use Illuminate\Http\Request;
 
 use App\Models\User;
@@ -28,7 +29,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.user.create');
+        $dependencias = Dependencia::pluck('nombre_dependencia', 'id');
+
+        return view('admin.user.create', compact('dependencias'));
     }
 
     /**

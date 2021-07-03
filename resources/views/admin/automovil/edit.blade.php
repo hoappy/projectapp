@@ -17,22 +17,47 @@
                 <div class="form-group">
                     {!! form::label('modelo', 'Modelo') !!}
                     {!! form::text('modelo', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el modelo del vehiculo']) !!}
+
+                    @error('modelo')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
+
                 </div>
                 <div class="form-group">
                     {!! form::label('patente', 'Patente') !!}
                     {!! form::text('patente', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la patente del vehiculo']) !!}
+
+                    @error('patente')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
+
                 </div>
                 <div class="form-group">
                     {!! form::label('anno', 'Año') !!}
                     {!! form::number('anno', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el ano del vehiculo']) !!}
+
+                    @error('anno')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
+
                 </div>
                 <div class="form-group">
                     {!! form::label('tipo_automovil', 'Tipo automovil') !!}
                     {!! form::text('tipo_automovil', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el tipo de vechiculo']) !!}
+                    
+                    @error('tipo_automovil')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
+                    
                 </div>
                 <div class="form-group">
                     {!! form::label('marca_automovil', 'Marca automovil') !!}
                     {!! form::text('marca_automovil', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la marca del automovil']) !!}
+                    
+                    @error('marca_automovil')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
+                    
                 </div>
 
                 {!! Form::submit('Modificar Automovil', ['class' => 'btn btn-primary']) !!}
