@@ -19,6 +19,11 @@ class Automovil extends Model
         
     ];
 
+    /*public function getRouteKeyName()
+    {
+        return "patente";
+    }*/
+
     public function posts(){
         return $this->hasMany(Post::class);
     }

@@ -7,9 +7,15 @@
 @stop
 
 @section('content')
+
+    @if (session('info'))
+        <div class="alert alert-success">
+            <strong>{{session('info')}}</strong>
+        </div>
+    @endif
     <div class="card">
         <div class="card-header">
-            <a class="btn btn-primary btn-sm" href="{{route('admin.automovils.create')}}">Agregar Automovil</a>
+            <a class="btn btn-primary" href="{{route('admin.automovils.create')}}">Agregar Automovil</a>
         </div>
         <div class="card-body">
             <table class="table table-striped">
@@ -31,6 +37,7 @@
                 <tbody class="text-center">
                     @foreach ($automovils as $automovil)      
                 <tr>
+
                     <td>{{$automovil->modelo}}</td>
                     <td>{{$automovil->marca_automovil}}</td>
                     <td>{{$automovil->anno}}</td>
@@ -45,11 +52,24 @@
                         <a class="btn btn-success btn-sm" href="{{route('admin.automovils.edit', $automovil)}}">Editar</a>
                     </td>
                     <td width="10px">
-                        <form href="{{route('admin.automovils.destroy', $automovil)}}" method="POST">
+                        <!--<form href="{{route('admin.automovils.destroy', $automovil)}}" method="POST">
                             @csrf
                             @method('delete')
                             <button tupe="submit" class="btn btn-danger btn-sm" >Eliminar</button>
-                        </form>
+                        </form>-->
+                        @if ($automovil->estado === '1')
+                            <form href="{{route('admin.automovils.desactivar', $automovil)}}" method="POST">
+                                @csrf
+                                @method('PATCH')
+                                <button role="submit" class="btn btn-danger btn-sm" >Desactivar</button>
+                            </form>
+                        @else
+                            <form href="{{route('admin.automovils.activar', $automovil)}}" method="POST">
+                                @csrf
+                                @method('PATCH')
+                                <button role="submit" class="btn btn-success btn-sm" >Activar</button>
+                            </form>
+                        @endif
                     </td>
                     
                 </tr>

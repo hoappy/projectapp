@@ -41,7 +41,7 @@ class automovilController extends Controller
     {
         $request->validate([
             'modelo' => ['required', 'string', 'max:255'],
-            'patente' => ['required', 'string', 'max:255'],
+            'patente' =>'required|unique:automovils',
             'anno' => ['required', 'integer'],
             'tipo_automovil' => ['required', 'string', 'max:255'],
             'marca_automovil' => ['required', 'string', 'max:255'],
@@ -52,7 +52,7 @@ class automovilController extends Controller
 
         //$automovils = Automovil::all();
 
-        return redirect()->route('admin.automovils.index'/*, $automovils*/);
+        return redirect()->route('admin.automovils.index'/*, $automovils*/)->with('info', 'El automovil se creo correctamente');
 
         //return $request->all();
     }
@@ -65,7 +65,7 @@ class automovilController extends Controller
      */
     public function show($id)
     {
-    return view('admin.automovil.show'/*, compact('automovils')*/);
+        return view('admin.automovil.show'/*, compact('automovils')*/);
     }
 
     /**
@@ -93,7 +93,7 @@ class automovilController extends Controller
     {
         $request->validate([
             'modelo' => ['required', 'string', 'max:255'],
-            'patente' => ['required', 'string', 'max:255'],
+            'patente' =>"required|unique:automovils,patente,$automovil->id",
             'anno' => ['required', 'integer'],
             'tipo_automovil' => ['required', 'string', 'max:255'],
             'marca_automovil' => ['required', 'string', 'max:255'],
@@ -102,7 +102,8 @@ class automovilController extends Controller
 
         $automovil->update($request->all());
 
-        return redirect()->route('admin.automovils.edit', $automovil);
+        //return redirect()->route('admin.automovils.edit', $automovil);
+        return redirect()->route('admin.automovils.index')->with('info', 'El automovil se actualizo correctamente');
     }
 
     /**
@@ -111,8 +112,28 @@ class automovilController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Automovil $automovil)
     {
-        //
+        $automovil->delete();
+
+        return redirect()->route('admin.automovils.index')->with('info', 'El automovil se elimino correctamente');
+    }
+
+    public function desactivar(Request $request)
+    {
+        $automovil = Automovil::findOrFail($request->id);
+        $automovil->estado = '0';
+        $automovil->save();
+        
+        return redirect()->route('admin.automovils.index')->with('info', 'El automovil se desactivo correctamente');
+    }
+
+    public function activar(Request $request)
+    {
+        $automovil = Automovil::findOrFail($request->id);
+        $automovil->estado = '1';
+        $automovil->save();
+        
+        return redirect()->route('admin.automovils.index')->with('info', 'El automovil se activo correctamente');
     }
 }

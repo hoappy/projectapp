@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\automovilController;
+use App\Http\Controllers\Admin\AutomovilController;
 use App\Http\Controllers\Admin\Ciudad_cometidoController;
 use App\Http\Controllers\Admin\CometidoController;
 use App\Http\Controllers\Admin\ConductorController;
@@ -14,7 +14,9 @@ Route::get('', [HomeController::class, 'index'])->name('admin.home');
 
 Route::resource('users', UserController::class)->names('admin.users');
 
-Route::resource('automovils', automovilController::class)->names('admin.automovils');
+Route::resource('automovils', AutomovilController::class)->names('admin.automovils');
+Route::patch('automovils/{id}/desactivar', [AutomovilController::class, 'desactivar'])->name('admin.automovils.desactivar');
+Route::patch('automovils/{id}/activar', [AutomovilController::class, 'activar'])->name('admin.automovils.activar');
 
 Route::resource('conductors', ConductorController::class)->names('admin.conductors');
 
