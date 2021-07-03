@@ -23,6 +23,8 @@ Route::put('conductors/{id}/desactivar', [ConductorController::class, 'desactiva
 Route::put('conductors/{id}/activar', [ConductorController::class, 'activar'])->name('admin.conductors.activar');
 
 Route::resource('dependencias', DependenciaController::class)->names('admin.dependencias');
+Route::put('dependencias/{id}/desactivar', [DependenciaController::class, 'desactivar'])->name('admin.dependencias.desactivar');
+Route::put('dependencias/{id}/activar', [DependenciaController::class, 'activar'])->name('admin.dependencias.activar');
 
 Route::resource('cometidos', CometidoController::class)->names('admin.cometidos');
 

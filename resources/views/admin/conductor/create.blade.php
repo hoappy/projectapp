@@ -15,8 +15,8 @@
             {!! Form::open(['route' => 'admin.conductors.store']) !!}
 
                 <div class="form-group">
-                    {!! form::label('tipo_licenca', 'Tipos de licencia') !!}
-                    {!! form::text('tipo_licenca', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el tipo de licencia']) !!}
+                    {!! form::label('tipo_licencia', 'Tipos de licencia') !!}
+                    {!! form::text('tipo_licencia', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el tipo de licencia']) !!}
                     @error('tipo_licenca')
                         <span class="text-danger">{{$message}}</span>
                     @enderror
