@@ -55,19 +55,19 @@
                         <!--<form href="{{route('admin.automovils.destroy', $automovil)}}" method="POST">
                             @csrf
                             @method('delete')
-                            <button tupe="submit" class="btn btn-danger btn-sm" >Eliminar</button>
+                            <button type="submit" class="btn btn-danger btn-sm" >Eliminar</button>
                         </form>-->
                         @if ($automovil->estado === '1')
-                            <form href="{{route('admin.automovils.desactivar', $automovil)}}" method="POST">
+                            <form action="{{route('admin.automovils.desactivar', $automovil)}}" method="POST">
                                 @csrf
-                                @method('PATCH')
-                                <button role="submit" class="btn btn-danger btn-sm" >Desactivar</button>
+                                {{method_field('put')}}
+                                <button type="submit" class="btn btn-danger btn-sm" >Desactivar</button>
                             </form>
                         @else
-                            <form href="{{route('admin.automovils.activar', $automovil)}}" method="POST">
+                            <form action="{{route('admin.automovils.activar', $automovil)}}" method="POST">
                                 @csrf
-                                @method('PATCH')
-                                <button role="submit" class="btn btn-success btn-sm" >Activar</button>
+                                {{method_field('put')}}
+                                <button type="submit" class="btn btn-success btn-sm" >Activar</button>
                             </form>
                         @endif
                     </td>

@@ -15,8 +15,8 @@ Route::get('', [HomeController::class, 'index'])->name('admin.home');
 Route::resource('users', UserController::class)->names('admin.users');
 
 Route::resource('automovils', AutomovilController::class)->names('admin.automovils');
-Route::patch('automovils/{id}/desactivar', [AutomovilController::class, 'desactivar'])->name('admin.automovils.desactivar');
-Route::patch('automovils/{id}/activar', [AutomovilController::class, 'activar'])->name('admin.automovils.activar');
+Route::put('automovils/{id}/desactivar', [AutomovilController::class, 'desactivar'])->name('admin.automovils.desactivar');
+Route::put('automovils/{id}/activar', [AutomovilController::class, 'activar'])->name('admin.automovils.activar');
 
 Route::resource('conductors', ConductorController::class)->names('admin.conductors');
 
