@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
 
+
+
 class UserController extends Controller
 {
-    use PasswordValidationRules;
-
     /**
      * Display a listing of the resource.
      *
@@ -25,9 +25,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-
-        return view('admin.user.index', compact('users'));
+        return view('admin.user.index');
     }
 
     /**
@@ -54,6 +52,8 @@ class UserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
 
+            'rut' => ['required', 'string', 'max:255'],
+
             'apellido_P' => ['required', 'string', 'max:255'],
             'apellido_M' => ['required', 'string', 'max:255'],
             'direccion' => ['required', 'string', 'max:255'],
@@ -68,6 +68,7 @@ class UserController extends Controller
         
         User::create([
             'name' =>$request->name,
+            'rut' =>$request->rut,
             'email' => $request->email,
             'apellido_P' => $request->apellido_P,
             'apellido_M' => $request->apellido_M,
@@ -101,9 +102,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-    return view('admin.user.edit'/*, compact('users')*/);
+        $dependencias = Dependencia::pluck('nombre_dependencia', 'id');
+
+        return view('admin.user.edit', compact('user', 'dependencias'));
     }
 
     /**
@@ -113,9 +116,30 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', "unique:users,email,$user->id"],
+
+            'rut' => ['required', 'string', 'max:255'],
+
+            'apellido_P' => ['required', 'string', 'max:255'],
+            'apellido_M' => ['required', 'string', 'max:255'],
+            'direccion' => ['required', 'string', 'max:255'],
+            'fecha_nacimiento' => ['required', 'date'],
+            'grado' => ['required', 'string', 'max:255'],
+            'nombre_cargo' => ['required', 'string', 'max:255'],
+            'dependencia_id' => ['required', 'integer'],
+
+            //'password' => $this->passwordRules(),
+            //'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
+        ]);
+        
+        $user->update($request->all());
+        
+
+        return redirect()->route('admin.users.index'/*, $automovils*/)->with('info', 'El usuario se creo correctamente');
     }
 
     /**

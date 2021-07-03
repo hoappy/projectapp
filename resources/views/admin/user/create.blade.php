@@ -14,6 +14,15 @@
         <div class="card-body">
             {!! Form::open(['route' => 'admin.users.store']) !!}
 
+            <div class="form-group">
+                    {!! form::label('rut', 'Rut') !!}
+                    {!! form::text('rut', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el Rut del Usuario a Agregar']) !!}
+
+                    @error('rut')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
+
+                </div>
                 <div class="form-group">
                     {!! form::label('name', 'Nombres') !!}
                     {!! form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el/los Nombre/s del Usuario a Agregar']) !!}
