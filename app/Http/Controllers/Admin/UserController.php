@@ -9,10 +9,13 @@ use Illuminate\Http\Request;
 use App\Models\User;
 
 use App\Actions\Fortify\PasswordValidationRules;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
+
+use Spatie\Permission\Models\Role;
 
 
 
@@ -23,6 +26,20 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('can:admin.user.index')->only('index');
+        $this->middleware('can:admin.user.edit')->only('edit');
+        $this->middleware('can:admin.user.create')->only('create');
+        $this->middleware('can:admin.user.destroy')->only('destroy');
+        $this->middleware('can:admin.user.activar')->only('activar');
+        $this->middleware('can:admin.user.desactivar')->only('desactivar');
+        //$this->middleware('can:admin.user.rolestore')->only('rolestore');
+        //$this->middleware('can:admin.user.roleasig')->only('roleasig');
+
+    }
+
     public function index()
     {
         return view('admin.user.index');
@@ -152,4 +169,18 @@ class UserController extends Controller
     {
         //
     }
+    public function roleasig(User $user)
+    {
+        $roles = Role::all();
+
+        return view('admin.user.role', compact('user', 'roles'));
+    }
+
+    public function rolestore(Request $request, User $user)
+    {
+        $user->roles()->sync($request->roles);
+
+        return redirect()->route('admin.users.roleasig', $user)->with('info', 'Se asigno el rol correctamente');
+    }
+    
 }

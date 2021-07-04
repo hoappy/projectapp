@@ -14,7 +14,7 @@
         <div class="card-body">
             {!! Form::model($user, ['route' => ['admin.users.update', $user], 'method' => 'put']) !!}
 
-            <div class="form-group">
+                <div class="form-group">
                     {!! form::label('rut', 'Rut') !!}
                     {!! form::text('rut', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el Rut del Usuario a Agregar']) !!}
 

@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
 
-            $table->string('apellido_p');
+            $table->string('apellido_P');
             $table->string('apellido_M');
             $table->string('direccion');
             $table->date('fecha_nacimiento');

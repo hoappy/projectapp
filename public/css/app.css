@@ -1218,6 +1218,9 @@ select {
 .ml-auto {
 	margin-left: auto;
 }
+.mr-1 {
+	margin-right: 0.25rem;
+}
 .mt-0 {
 	margin-top: 0px;
 }

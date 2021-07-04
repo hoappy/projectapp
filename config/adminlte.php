@@ -245,22 +245,25 @@ return [
         [
             'text' => 'Dashboard',
             'route' => 'admin.home',
+            'can' => 'admin.home',
         ],
-        [
+        /*[
             'text' => 'blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
-        ],
+        ],*/
         ['header' => 'Administrador'],
         [
-            'text'        => 'Listado Usuarios',
-            'route'  => 'admin.users.index',
-            'icon'        => 'fas fa-users',
+            'text' => 'Listado Usuarios',
+            'route' => 'admin.users.index',
+            'icon' => 'fas fa-users',
+            'can' => 'admin.user.index', 
         ],
         [
-            'text'        => 'Cometidos',
-            'route'  => 'admin.cometidos.index',
-            'icon'        => 'fas fa-archive',
+            'text' => 'Cometidos',
+            'route' => 'admin.cometidos.index',
+            'icon' => 'fas fa-archive',
+            'can' => 'admin.cometido.index',
             /*['submenu' => [
                 
                     'text' => 'Listado',
@@ -281,22 +284,31 @@ return [
             ],*/
         ],
         [
-            'text'        => 'Listado Automovil',
+            'text' => 'Listado Automovil',
             'route'  => 'admin.automovils.index',
-            'icon'        => 'fas fa-car',
+            'icon' => 'fas fa-car',
+            'can'  => 'admin.automovil.index',
         ],
         [
             'text'        => 'Listado Conductores',
             'route'  => 'admin.conductors.index',
             'icon'        => 'fas fa-user-shield',
+            'can'  => 'admin.conductor.index',
         ],
         [
             'text'        => 'Listado Dependencias',
             'route'  => 'admin.dependencias.index',
             'icon'        => 'fas fa-building',
+            'can'  => 'admin.dependencia.index',
+        ],
+        [
+            'text'        => 'Listado de los item presupuestarios',
+            'route'  => 'admin.item_presupuestarios.index',
+            'icon'        => 'fas fa-building',
+            'can'  => 'admin.item_presupuestario.index',
         ],
         
-        [
+        /*[
             'text' => 'profile',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
@@ -359,7 +371,7 @@ return [
             'text'       => 'information',
             'icon_color' => 'cyan',
             'url'        => '#',
-        ],
+        ],*/
     ],
 
     /*
@@ -480,5 +492,5 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Other-Configuration
     */
 
-    'livewire' => false,
+    'livewire' => true,
 ];

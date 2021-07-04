@@ -3,7 +3,10 @@
 @section('title', 'Listado Usuarios')
 
 @section('content_header')
-    <h1>Listado Usuarios</h1><a class="btn btn-primary" href="{{route('admin.users.create')}}">Agregar Usuario</a>
+    @can('admin.user.index')
+        <a class="btn btn-secondary float-right" href="{{route('admin.users.create')}}">Agregar Usuario</a>
+    @endcan
+    <h1>Listado Usuarios</h1>
 @stop
 
 @section('content')

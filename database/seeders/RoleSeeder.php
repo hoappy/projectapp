@@ -42,13 +42,16 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'admin.user.destroy'])->assignRole($role1);
         Permission::create(['name' => 'admin.user.activar'])->assignRole($role1);
         Permission::create(['name' => 'admin.user.desactivar'])->assignRole($role1);
+        Permission::create(['name' => 'admin.user.rolestore'])->assignRole($role1);
+        Permission::create(['name' => 'admin.user.roleasig'])->assignRole($role1);
+        
 
-        Permission::create(['name' => 'admin.item_presupuestario.index']);
-        Permission::create(['name' => 'admin.item_presupuestario.edit']);
-        Permission::create(['name' => 'admin.item_presupuestario.create']);
-        Permission::create(['name' => 'admin.item_presupuestario.destroy']);
-        Permission::create(['name' => 'admin.item_presupuestario.activar']);
-        Permission::create(['name' => 'admin.item_presupuestario.desactivar']);
+        Permission::create(['name' => 'admin.item_presupuestario.index'])->assignRole($role1);
+        Permission::create(['name' => 'admin.item_presupuestario.edit'])->assignRole($role1);
+        Permission::create(['name' => 'admin.item_presupuestario.create'])->assignRole($role1);
+        Permission::create(['name' => 'admin.item_presupuestario.destroy'])->assignRole($role1);
+        Permission::create(['name' => 'admin.item_presupuestario.activar'])->assignRole($role1);
+        Permission::create(['name' => 'admin.item_presupuestario.desactivar'])->assignRole($role1);
 
         Permission::create(['name' => 'admin.dependencia.index'])->assignRole($role1);
         Permission::create(['name' => 'admin.dependencia.edit'])->assignRole($role1);

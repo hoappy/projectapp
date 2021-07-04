@@ -12,15 +12,17 @@ use App\Http\Controllers\Admin\UserController;
 
 Route::get('', [HomeController::class, 'index'])->name('admin.home');
 
+//Route::resource('users', UserController::class)->middleware('can:admin.user.index')->names('admin.users');
+//Route::resource('users', UserController::class)->except('show')->names('admin.users');
 Route::resource('users', UserController::class)->names('admin.users');
-Route::put('users/{id}/desactivar', [UsersController::class, 'desactivar'])->name('admin.users.desactivar');
-Route::put('users/{id}/activar', [UsersController::class, 'activar'])->name('admin.users.activar');
+Route::put('users/{id}/desactivar', [UserController::class, 'desactivar'])->name('admin.users.desactivar');
+Route::put('users/{id}/activar', [UserController::class, 'activar'])->name('admin.users.activar');
 
-Route::post('users/{id}/rolecreate', [UsersController::class, 'role'])->name('admin.users.rolecreate');
-Route::put('users/{id}/rolestore', [UsersController::class, 'role'])->name('admin.users.rolestore');
-Route::post('users/{id}/roleedit', [UsersController::class, 'roleedit'])->name('admin.users.roleedit');
-Route::put('users/{id}/roleupdate', [UsersController::class, 'role'])->name('admin.users.roleupdate');
+Route::post('users/{id}/rolecreate', [UserController::class, 'rolecreate'])->name('admin.users.rolecreate');
+Route::put('users/{id}/roleupdate', [UserController::class, 'role'])->name('admin.users.roleupdate');
 
+Route::get('users/{user}/roleasig', [UserController::class, 'roleasig'])->name('admin.users.roleasig');
+Route::put('users/{user}/rolestore', [UserController::class, 'rolestore'])->name('admin.users.rolestore');
 
 Route::resource('automovils', AutomovilController::class)->names('admin.automovils');
 Route::put('automovils/{id}/desactivar', [AutomovilController::class, 'desactivar'])->name('admin.automovils.desactivar');
