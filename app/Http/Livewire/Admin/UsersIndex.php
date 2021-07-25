@@ -26,7 +26,7 @@ class UsersIndex extends Component
         ->orWhere('apellido_P', 'LIKE', '%' . $this->search . '%')
         ->orWhere('apellido_M', 'LIKE', '%' . $this->search . '%')
         ->orWhere('email', 'LIKE', '%' . $this->search . '%')
-        ->paginate(1);
+        ->paginate(10);
 
         return view('livewire.admin.users-index', compact('users'));
     }

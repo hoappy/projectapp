@@ -28,7 +28,7 @@ class ConductorController extends Controller
      */
     public function create()
     {
-        $automovil = Automovil::pluck('patente', 'id');
+        $automovil = Automovil::Where('estado', '=', '1')->pluck('patente', 'id');
         return view('admin.conductor.create', compact('automovil'));
         
     }
@@ -81,7 +81,8 @@ class ConductorController extends Controller
      */
     public function edit(Conductor $conductor)
     {
-    return view('admin.conductor.edit', compact('conductor'));
+        $automovil = Automovil::Where('estado', '=', '1')->pluck('patente', 'id');
+        return view('admin.conductor.edit', compact('conductor', 'automovil'));
     }
 
     /**

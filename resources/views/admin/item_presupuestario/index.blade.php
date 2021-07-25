@@ -3,52 +3,62 @@
 @section('title', 'Listado Usuarios')
 
 @section('content_header')
-    <h1>Listado Usuarios</h1>
+    @can('admin.user.index')
+        <a class="btn btn-secondary float-right" href="{{route('admin.item_presupuestarios.create')}}">Agregar Item Presupuestario</a>
+    @endcan
+    <h1>Listado Item Presupuestario</h1>
 @stop
 
 @section('content')
-    <div class="card">
-        <div class="card-header">
-            <a class="btn btn-primary btn-sm" href="{{route('admin.item_presupuestariors.create')}}">Agregar Usuario</a>
+
+    @if (session('info'))
+        <div class="alert alert-success">
+            <strong>{{session('info')}}</strong>
         </div>
+    @endif
+
+
+    <div class="card">
         <div class="card-body">
             <table class="table table-striped">
                 <thead class="text-center">
                 <tr>
-                    <th scope="col">Nombres</th>
-                    
-                    
-                    <!--<th scope="col">Detalles</th>
-                    <th scope="col">Editar</th>
-                    <th scope="col">Eliminar</th>-->
-                    
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Valor</th>
                 </tr>
                 </thead>
-                <!-- <tbody class="text-center">
-                    @foreach ($item_presupuestariors as $item_presupuestarior)      
+                <tbody class="text-center">
+                    @foreach ($item_presupuestarios as $item_presupuestario)      
                 <tr>
-                    <td>{{$item_presupuestarior->name}}</td>
-                    
+                    <td>{{$item_presupuestario->nombre_item_presupuestario}}</td>
+                    <td>{{$item_presupuestario->descripcion}}</td>
+                    <td>{{$item_presupuestario->valor}}</td>
 
-                    <td width="10px"> 
-                        <a class="btn btn-primary btn-sm" href="{{route('admin.item_presupuestariors.show', $item_presupuestarior)}}">Detalles</a>
-                    </td>
                     <td width="10px">
-                        <a class="btn btn-success btn-sm" href="{{route('admin.item_presupuestariors.edit', $item_presupuestarior)}}">Editar</a>
+                        <a class="btn btn-secondary btn-sm" href="{{route('admin.item_presupuestarios.edit', $item_presupuestario)}}">Editar</a>
                     </td>
+
                     <td width="10px">
-                        <form href="{{route('admin.item_presupuestariors.destroy', $item_presupuestarior)}}" method="POST">
-                            @csrf
-                            @method('delete')
-                            <button tupe="submit" class="btn btn-danger btn-sm" >Eliminar</button>
-                        </form>
-                    </td>
-                    
+                        @if ($item_presupuestario->estado === '1' )
+                            <form action="{{route('admin.item_presupuestarios.desactivar', $item_presupuestario)}}" method="POST">
+                                @csrf
+                                {{method_field('put')}}
+                                <button type="submit" class="btn btn-danger btn-sm" >desactivar</button>
+                            </form>
+                        @else
+                            <form action="{{route('admin.item_presupuestarios.activar', $item_presupuestario)}}" method="POST">
+                                @csrf
+                                {{method_field('put')}}
+                                <button type="submit" class="btn btn-success btn-sm" >Activar</button>
+                            </form>   
+                        @endif 
+                    </td>                
                 </tr>
                 @endforeach
                 
                 
-                </tbody> -->
+                </tbody>
             </table>
         </div>
     </div>

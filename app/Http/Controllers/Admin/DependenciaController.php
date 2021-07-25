@@ -45,11 +45,7 @@ class DependenciaController extends Controller
 
         Dependencia::create($request->all());
 
-        //$automovils = Automovil::all();
-
-        return redirect()->route('admin.dependencias.index'/*, $automovils*/)->with('info', 'La dependencia se creo correctamente');
-
-        //return $request->all();
+        return redirect()->route('admin.dependencias.index')->with('info', 'La dependencia se creo correctamente');
     }
 
     /**
@@ -69,9 +65,10 @@ class DependenciaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Dependencia $dependencia)
     {
-    return view('admin.dependencia.edit'/*, compact('dependencias')*/);
+
+        return view('admin.dependencia.edit', compact('dependencia'));
     }
 
     /**
@@ -81,7 +78,7 @@ class DependenciaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Dependencia $dependencia)
     {
         $request->validate([
             'nombre_dependencia' => ['required', 'string', 'max:255'],
@@ -90,12 +87,8 @@ class DependenciaController extends Controller
 
         $dependencia->update($request->all());
 
-        //$automovils = Automovil::all();
+        return redirect()->route('admin.dependencias.index')->with('info', 'la dependencia se actualizo correctamente');
 
-        return redirect()->route('admin.dependecias.index')->with('info', 'la dependencia se actualizo correctamente');
-
-
-        //return $request->all();
     }
 
     /**
@@ -111,19 +104,19 @@ class DependenciaController extends Controller
 
     public function desactivar(Request $request)
     {
-        $automovil = Dependencia::findOrFail($request->id);
-        $automovil->estado = '0';
-        $automovil->save();
+        $dependencia = Dependencia::findOrFail($request->id);
+        $dependencia->estado = '0';
+        $dependencia->save();
         
         return redirect()->route('admin.dependencias.index')->with('info', 'La dependencia se desactivo correctamente');
     }
 
     public function activar(Request $request)
     {
-        $automovil = Dependencia::findOrFail($request->id);
-        $automovil->estado = '1';
-        $automovil->save();
+        $dependencia = Dependencia::findOrFail($request->id);
+        $dependencia->estado = '1';
+        $dependencia->save();
         
-        return redirect()->route('admin.dependecias.index')->with('info', 'La dependencia se activo correctamente');
+        return redirect()->route('admin.dependencias.index')->with('info', 'La dependencia se activo correctamente');
     }
 }

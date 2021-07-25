@@ -3,6 +3,7 @@
 @section('title', 'Listado de Automoviles')
 
 @section('content_header')
+    <a class="btn btn-secondary float-right" href="{{route('admin.automovils.create')}}">Agregar Automovil</a>
     <h1>Listado de Automoviles</h1>
 @stop
 
@@ -14,9 +15,6 @@
         </div>
     @endif
     <div class="card">
-        <div class="card-header">
-            <a class="btn btn-primary" href="{{route('admin.automovils.create')}}">Agregar Automovil</a>
-        </div>
         <div class="card-body">
             <div class="card-header">
                 <h4>Automoviles Activos</h4>

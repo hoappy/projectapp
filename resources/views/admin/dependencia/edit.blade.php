@@ -9,10 +9,25 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h1 class="card-title">Bienvenido</h1>
+            <h1 class="card-title">Ingrese los Campos Con los datos Requeridos</h1>
         </div>
         <div class="card-body">
-            <p>Este es el panel de administracion donde podra gestionar todos los ambitos del sistema de cometidos</p>
+            {!! Form::model($dependencia, ['route' => ['admin.dependencias.update', $dependencia], 'method' => 'put']) !!}
+
+                <div class="form-group">
+                    {!! form::label('nombre_dependencia', 'Nombre de dependencia') !!}
+                    {!! form::text('nombre_dependencia', null, ['class' => 'form-control', 'placeholder' => 'Ingrese nombre de la dependencia']) !!}
+                </div>
+                <div class="form-group">
+                    {!! form::label('direccion_dependencia', 'Direccion de dependencia') !!}
+                    {!! form::text('direccion_dependencia', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la direccion de la dependencia']) !!}
+                </div>
+                
+
+                {!! Form::submit('Agregar Usuario', ['class' => 'btn btn-primary']) !!}
+
+            {!! Form::close() !!}
+
         </div>
     </div>
     

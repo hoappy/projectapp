@@ -41,6 +41,8 @@ Route::resource('cometidos', CometidoController::class)->names('admin.cometidos'
 Route::resource('ciudad_cometidos', Ciudad_cometidoController::class)->names('admin.ciudad_cometidos');
 
 Route::resource('item_presupuestarios', Item_presupuestarioController::class)->names('admin.item_presupuestarios');
+Route::put('item_presupuestarios/{id}/desactivar', [Item_presupuestarioController::class, 'desactivar'])->name('admin.item_presupuestarios.desactivar');
+Route::put('item_presupuestarios/{id}/activar', [Item_presupuestarioController::class, 'activar'])->name('admin.item_presupuestarios.activar');
 
 /*Route::get('users', [UserController::class, 'index'])->name('admin.index');*/
 

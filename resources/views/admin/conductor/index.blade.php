@@ -3,6 +3,7 @@
 @section('title', 'Listado de Conductor')
 
 @section('content_header')
+    <a class="btn btn-secondary float-right" href="{{route('admin.conductors.create')}}">Agregar Conductor</a>
     <h1>Listado de Conductor</h1>
 @stop
 
@@ -13,9 +14,6 @@
         </div>
     @endif
     <div class="card">
-        <div class="card-header">
-            <a class="btn btn-primary btn-sm" href="{{route('admin.conductors.create')}}">Agregar Conductor</a>
-        </div>
         <div class="card-body">
             <table class="table table-striped">
                 <thead class="text-center">

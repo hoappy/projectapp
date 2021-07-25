@@ -180,6 +180,8 @@ class UserController extends Controller
     {
         $user->roles()->sync($request->roles);
 
+        
+
         return redirect()->route('admin.users.roleasig', $user)->with('info', 'Se asigno el rol correctamente');
     }
     

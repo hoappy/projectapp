@@ -3,14 +3,20 @@
 @section('title', 'Listado de Dependencias')
 
 @section('content_header')
+    <a class="btn btn-secondary float-right" href="{{route('admin.dependencias.create')}}">Agregar Dependencia</a>
     <h1>Listado de Dependencias</h1>
 @stop
 
 @section('content')
-    <div class="card">
-        <div class="card-header">
-            <a class="btn btn-primary btn-sm" href="{{route('admin.dependencias.create')}}">Agregar Dependencia</a>
+
+    @if (session('info'))
+        <div class="alert alert-success">
+            <strong>{{session('info')}}</strong>
         </div>
+    @endif
+
+
+    <div class="card">
         <div class="card-body">
             <table class="table table-striped">
                 <thead class="text-center">
@@ -30,19 +36,24 @@
                     <td>{{$dependencia->nombre_dependencia}}</td>
                     <td>{{$dependencia->direccion_dependencia}}</td>
                     
-                    <td width="10px"> 
-                        <a class="btn btn-primary btn-sm" href="{{route('admin.dependencias.show', $dependencia)}}">Detalles</a>
+                    <td width="10px">
+                        <a class="btn btn-secondary btn-sm" href="{{route('admin.dependencias.edit', $dependencia)}}">Editar</a>
                     </td>
                     <td width="10px">
-                        <a class="btn btn-success btn-sm" href="{{route('admin.dependencias.edit', $dependencia)}}">Editar</a>
+                        @if ($dependencia->estado === '1' )
+                            <form action="{{route('admin.dependencias.desactivar', $dependencia)}}" method="POST">
+                                @csrf
+                                {{method_field('put')}}
+                                <button type="submit" class="btn btn-danger btn-sm" >desactivar</button>
+                            </form>
+                        @else
+                            <form action="{{route('admin.dependencias.activar', $dependencia)}}" method="POST">
+                                @csrf
+                                {{method_field('put')}}
+                                <button type="submit" class="btn btn-success btn-sm" >Activar</button>
+                            </form>   
+                        @endif 
                     </td>
-                    {{-- <td width="10px">
-                        <form href="{{route('admin.dependencias.destroy', $dependencia)}}" method="POST">
-                            @csrf
-                            @method('delete')
-                            <button tupe="submit" class="btn btn-danger btn-sm" >Eliminar</button>
-                        </form>
-                    </td> --}}
                     
                 </tr>
                 @endforeach

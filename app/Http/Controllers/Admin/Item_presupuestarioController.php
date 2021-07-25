@@ -15,9 +15,9 @@ class Item_presupuestarioController extends Controller
      */
     public function index()
     {
-        $item_presupuestaris = Item_presupuestario::all();
+        $item_presupuestarios = Item_presupuestario::all();
 
-        return view('admin.item_presupuestari.index', compact('item_presupuestaris'));
+        return view('admin.item_presupuestario.index', compact('item_presupuestarios'));
     }
 
     /**
@@ -27,7 +27,7 @@ class Item_presupuestarioController extends Controller
      */
     public function create()
     {
-        return view('admin.item_presupuestari.create');
+        return view('admin.item_presupuestario.create');
     }
 
     /**
@@ -38,7 +38,19 @@ class Item_presupuestarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre_item_presupuestario' => ['required', 'string', 'max:255'],
+            'descripcion' => ['required', 'string', 'max:255'], 
+            'valor' => ['required', 'integer'],        
+        ]);
+
+        Item_presupuestario::create($request->all());
+
+        //$automovils = Automovil::all();
+
+        return redirect()->route('admin.item_presupuestarios.index'/*, $automovils*/)->with('info', 'La item_presupuestario se creo correctamente');
+
+        //return $request->all();
     }
 
     /**
@@ -49,7 +61,7 @@ class Item_presupuestarioController extends Controller
      */
     public function show($id)
     {
-    return view('admin.item_presupuestari.show'/*, compact('item_presupuestaris')*/);
+    return view('admin.item_presupuestario.show', compact('item_presupuestarios'));
     }
 
     /**
@@ -58,9 +70,10 @@ class Item_presupuestarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Item_presupuestario $item_presupuestario)
     {
-    return view('admin.item_presupuestari.edit'/*, compact('item_presupuestaris')*/);
+
+        return view('admin.item_presupuestario.edit', compact('item_presupuestario'));
     }
 
     /**
@@ -70,9 +83,17 @@ class Item_presupuestarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Item_presupuestario $item_presupuestario)
     {
-        //
+        $request->validate([
+            'nombre_item_presupuestario' => ['required', 'string', 'max:255'],
+            'descripcion' => ['required', 'string', 'max:255'], 
+            'valor' => ['required', 'integer'],        
+        ]);
+
+        $item_presupuestario->update($request->all());
+
+        return redirect()->route('admin.item_presupuestarios.index')->with('info', 'El item_presupuestario se actualizo correctamente');
     }
 
     /**
@@ -84,5 +105,23 @@ class Item_presupuestarioController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function desactivar(Request $request)
+    {
+        $item_presupuestario = Item_presupuestario::findOrFail($request->id);
+        $item_presupuestario->estado = '0';
+        $item_presupuestario->save();
+        
+        return redirect()->route('admin.item_presupuestarios.index')->with('info', 'La item_presupuestario se desactivo correctamente');
+    }
+
+    public function activar(Request $request)
+    {
+        $item_presupuestario = Item_presupuestario::findOrFail($request->id);
+        $item_presupuestario->estado = '1';
+        $item_presupuestario->save();
+        
+        return redirect()->route('admin.item_presupuestarios.index')->with('info', 'La item_presupuestario se activo correctamente');
     }
 }

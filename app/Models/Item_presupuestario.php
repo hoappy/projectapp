@@ -11,7 +11,7 @@ class Item_presupuestario extends Model
 
     protected $fillable = [
         'nombre_item_presupuestario',
-        'descripccion',
+        'descripcion',
         'valor',
         'estado',
         
