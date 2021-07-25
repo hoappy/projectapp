@@ -26,7 +26,7 @@ class CreateCometidosTable extends Migration
             $table->integer('tipo_transporte_regreso');
             $table->string('progreso');
 
-            $table->enum('estado',[0, 1])->default(1);
+            $table->enum('estado',[0, 1, 2, 3])->default(0);
 
             $table->unsignedBigInteger('automovil_id');
             $table->unsignedBigInteger('item_presupuestario_id');

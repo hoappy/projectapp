@@ -31,6 +31,8 @@ class CreateUsersTable extends Migration
             $table->string('grado');
             $table->string('nombre_cargo');
 
+            $table->enum('estado',[0, 1])->default(1);
+
             $table->unsignedBigInteger('dependencia_id');
 
             $table->foreign('dependencia_id')->references('id')->on('dependencias')->onDelete('cascade');

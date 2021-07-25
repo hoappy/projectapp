@@ -23,6 +23,7 @@ class CreateAutomovilsTable extends Migration
             $table->string('marca_automovil');
 
             $table->enum('estado',[0, 1])->default(1);
+            $table->enum('libre',[0, 1])->default(1);
 
             $table->timestamps();
         });

@@ -22,19 +22,19 @@ class RoleSeeder extends Seeder
 
         Permission::create(['name' => 'admin.home'])->syncRoles([$role1, $role2, $role3]);
 
-        Permission::create(['name' => 'admin.cometido.autorizar'])->syncRoles([$role1, $role2]);
-        Permission::create(['name' => 'admin.cometido.denegar'])->syncRoles([$role1, $role2]);
-        Permission::create(['name' => 'admin.cometido.solicitar'])->syncRoles([$role1, $role2, $role3]);
         Permission::create(['name' => 'admin.cometido.cancelar'])->syncRoles([$role1, $role2, $role3]);
+        Permission::create(['name' => 'admin.cometido.autorizar'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'admin.cometido.rechazar'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'admin.cometido.denegar'])->assignRole($role1);
         Permission::create(['name' => 'admin.cometido.asignar'])->assignRole($role1);
-        Permission::create(['name' => 'admin.cometido.rechazar'])->assignRole($role1);
 
-        Permission::create(['name' => 'admin.cometido.index'])->syncRoles([$role1, $role2, $role3]);
+
+        Permission::create(['name' => 'admin.cometido.index'])->syncRoles([$role2, $role3]);
+        Permission::create(['name' => 'admin.cometido.jefe'])->assignRole($role2);
+        Permission::create(['name' => 'admin.cometido.admin'])->assignRole($role1);
         Permission::create(['name' => 'admin.cometido.edit'])->syncRoles([$role1, $role2, $role3]);
         Permission::create(['name' => 'admin.cometido.create'])->syncRoles([$role1, $role2, $role3]);
         Permission::create(['name' => 'admin.cometido.destroy'])->syncRoles([$role1, $role2, $role3]);
-        Permission::create(['name' => 'admin.cometido.activar'])->syncRoles([$role1, $role2, $role3]);
-        Permission::create(['name' => 'admin.cometido.desactivar'])->syncRoles([$role1, $role2, $role3]);
 
         Permission::create(['name' => 'admin.user.index'])->assignRole($role1);
         Permission::create(['name' => 'admin.user.edit'])->assignRole($role1);

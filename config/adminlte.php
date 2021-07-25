@@ -261,27 +261,24 @@ return [
         ],
         [
             'text' => 'Cometidos',
-            'route' => 'admin.cometidos.index',
             'icon' => 'fas fa-archive',
-            'can' => 'admin.cometido.index',
-            /*['submenu' => [
-                
-                    'text' => 'Listado',
-                    //aqui iria la ruta
+            //'can' => 'admin.cometido.admin',
+            'submenu' => [
+                [
+                    'text' => 'Mis Cometidos',
+                    'route' => 'admin.cometidos.index',
                 ],
                 [
-                    'text' => 'Por Aprobar',
-                    'route'  => 'admin.cometidos.poraprobar',
+                    'text' => 'Cometidos Subornidanos',
+                    'route'  => 'admin.cometidos.jefe',
+                    'can' => 'admin.cometido.jefe',
                 ],
                 [
-                    'text' => 'Aprobados',
-                    'route'  => 'admin.cometidos.aprobado',
+                    'text' => 'Todos los Cometidos',
+                    'route'  => 'admin.cometidos.admin',
+                    'can' => 'admin.cometido.admin',
                 ],
-                [
-                    'text' => 'Rechazados',
-                    'route'  => 'admin.cometidos.rechazado',
-                ],
-            ],*/
+            ],
         ],
         [
             'text' => 'Listado Automovil',

@@ -36,13 +36,26 @@ Route::resource('dependencias', DependenciaController::class)->names('admin.depe
 Route::put('dependencias/{id}/desactivar', [DependenciaController::class, 'desactivar'])->name('admin.dependencias.desactivar');
 Route::put('dependencias/{id}/activar', [DependenciaController::class, 'activar'])->name('admin.dependencias.activar');
 
-Route::resource('cometidos', CometidoController::class)->names('admin.cometidos');
-
 Route::resource('ciudad_cometidos', Ciudad_cometidoController::class)->names('admin.ciudad_cometidos');
 
 Route::resource('item_presupuestarios', Item_presupuestarioController::class)->names('admin.item_presupuestarios');
 Route::put('item_presupuestarios/{id}/desactivar', [Item_presupuestarioController::class, 'desactivar'])->name('admin.item_presupuestarios.desactivar');
 Route::put('item_presupuestarios/{id}/activar', [Item_presupuestarioController::class, 'activar'])->name('admin.item_presupuestarios.activar');
+
+Route::resource('cometidos', CometidoController::class)->names('admin.cometidos');
+//los 3 usuarios
+Route::put('cometidos/{id}/cancelar', [Item_presupuestarioController::class, 'cancelar'])->name('admin.cometidos.cancelar');
+//el jefe
+Route::put('cometidos/{id}/autorizar', [Item_presupuestarioController::class, 'autorizar'])->name('admin.cometidos.autorizar');
+Route::put('cometidos/{id}/rechazar', [Item_presupuestarioController::class, 'rechazar'])->name('admin.cometidos.rechazar');
+Route::get('cometidos/jefe/index', [cometidoController::class, 'jefe'])->name('admin.cometidos.jefe');
+//el admin
+Route::put('cometidos/{id}/asignar', [Item_presupuestarioController::class, 'asignar'])->name('admin.cometidos.asignar');
+Route::put('cometidos/{id}/denegar', [Item_presupuestarioController::class, 'denegar'])->name('admin.cometidos.denegar');
+Route::put('cometidos/{id}/liberar', [Item_presupuestarioController::class, 'liberar'])->name('admin.cometidos.liberar');
+Route::get('cometidos/admin/index', [cometidoController::class, 'admin'])->name('admin.cometidos.admin');
+
+Route::get('cometidos/{user}/selectautomovil', [UserController::class, 'selectautomovil'])->name('admin.cometidos.selectautomovil');
 
 /*Route::get('users', [UserController::class, 'index'])->name('admin.index');*/
 

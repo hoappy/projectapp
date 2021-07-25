@@ -16,6 +16,7 @@ class Automovil extends Model
         'tipo_automovil',
         'marca_automovil',
         'estado',
+        'libre',
         
     ];
 
