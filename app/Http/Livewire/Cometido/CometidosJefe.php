@@ -21,8 +21,9 @@ class CometidosJefe extends Component
 
     public function render()
     {
-        $cometidos = Cometido::all()->where('user_jefe_id','=', auth()->user()->id )
-        ->where('objetivo', 'LIKE', '%' . $this->search . '%');
+        $cometidos = Cometido::where('user_jefe_id','=', auth()->user()->id )
+        ->where('objetivo', 'LIKE', '%' . $this->search . '%')
+        ->paginate(10);
         
         return view('livewire.cometido.cometidos-jefe', compact('cometidos'));
     }

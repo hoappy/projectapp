@@ -28,14 +28,14 @@
                             </td>
                             @if ($cometido->estado === '0')
                             <td width="10px">
-                                    <form action="{{route('admin.cometidos.asignar', $cometido)}}" method="POST">
+                                    <form action="{{route('admin.cometidos.autorizar', $cometido)}}" method="POST">
                                         @csrf
                                         {{method_field('put')}}
-                                        <button type="submit" class="btn btn-danger btn-sm" >Autorizar</button>
+                                        <button type="submit" class="btn btn-success btn-sm" >Autorizar</button>
                                     </form>
                                 </td>
                                 <td width="10px">
-                                    <form action="{{route('admin.cometidos.denegar', $cometido)}}" method="POST">
+                                    <form action="{{route('admin.cometidos.rechazar', $cometido)}}" method="POST">
                                         @csrf
                                         {{method_field('put')}}
                                         <button type="submit" class="btn btn-danger btn-sm" >Rechazar</button>

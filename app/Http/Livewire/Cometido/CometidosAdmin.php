@@ -21,7 +21,9 @@ class CometidosAdmin extends Component
 
     public function render()
     {
-        $cometidos = Cometido::where('objetivo', 'LIKE', '%' . $this->search . '%');
+        $cometidos = Cometido::where('objetivo', 'LIKE', '%' . $this->search . '%')
+        //->andwhere('estado', '=', '2')
+        ->paginate(10);
         
         return view('livewire.cometido.cometidos-admin', compact('cometidos'));
     }

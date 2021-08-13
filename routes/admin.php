@@ -10,6 +10,10 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\Item_presupuestarioController;
 use App\Http\Controllers\Admin\UserController;
 
+use App\Mail\cometidoAceptado;
+use App\Mail\cometidoRechazado;
+use Illuminate\Support\Facades\Mail;
+
 Route::get('', [HomeController::class, 'index'])->name('admin.home');
 
 //Route::resource('users', UserController::class)->middleware('can:admin.user.index')->names('admin.users');
@@ -44,19 +48,29 @@ Route::put('item_presupuestarios/{id}/activar', [Item_presupuestarioController::
 
 Route::resource('cometidos', CometidoController::class)->names('admin.cometidos');
 //los 3 usuarios
-Route::put('cometidos/{id}/cancelar', [Item_presupuestarioController::class, 'cancelar'])->name('admin.cometidos.cancelar');
+Route::put('cometidos/{id}/cancelar', [cometidoController::class, 'cancelar'])->name('admin.cometidos.cancelar');
 //el jefe
-Route::put('cometidos/{id}/autorizar', [Item_presupuestarioController::class, 'autorizar'])->name('admin.cometidos.autorizar');
-Route::put('cometidos/{id}/rechazar', [Item_presupuestarioController::class, 'rechazar'])->name('admin.cometidos.rechazar');
+Route::put('cometidos/{id}/autorizar', [cometidoController::class, 'autorizar'])->name('admin.cometidos.autorizar');
+Route::put('cometidos/{id}/rechazar', [cometidoController::class, 'rechazar'])->name('admin.cometidos.rechazar');
 Route::get('cometidos/jefe/index', [cometidoController::class, 'jefe'])->name('admin.cometidos.jefe');
-//el admin
-Route::put('cometidos/{id}/asignar', [Item_presupuestarioController::class, 'asignar'])->name('admin.cometidos.asignar');
-Route::put('cometidos/{id}/denegar', [Item_presupuestarioController::class, 'denegar'])->name('admin.cometidos.denegar');
-Route::put('cometidos/{id}/liberar', [Item_presupuestarioController::class, 'liberar'])->name('admin.cometidos.liberar');
 Route::get('cometidos/admin/index', [cometidoController::class, 'admin'])->name('admin.cometidos.admin');
-
-Route::get('cometidos/{user}/selectautomovil', [UserController::class, 'selectautomovil'])->name('admin.cometidos.selectautomovil');
+//el admin
+Route::put('cometidos/{cometido}/asignar', [cometidoController::class, 'asignar'])->name('admin.cometidos.asignar');
+Route::put('cometidos/{id}/denegar', [cometidoController::class, 'denegar'])->name('admin.cometidos.denegar');
+Route::put('cometidos/{id}/selectautomovil', [cometidoController::class, 'selectautomovil'])->name('admin.cometidos.selectautomovil');
+Route::put('cometidos/{id}/liberar', [cometidoController::class, 'liberar'])->name('admin.cometidos.liberar');
+Route::get('cometidos/admin/index', [cometidoController::class, 'admin'])->name('admin.cometidos.admin');
 
 /*Route::get('users', [UserController::class, 'index'])->name('admin.index');*/
 
-
+// prueba envio de correos
+Route::get('aceptado', function(){ 
+    $correo = new cometidoAceptado;
+    Mail::to('hoappy.py@gmail.com')->send($correo);
+    return "mensaje Enviado";
+});
+Route::get('rechazado', function(){
+    $correo = new cometidoRechazado;
+    Mail::to('hoappy.py@gmail.com')->send($correo);
+    return "mensaje Enviado";
+ });

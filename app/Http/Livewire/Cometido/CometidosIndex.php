@@ -22,7 +22,8 @@ class CometidosIndex extends Component
     public function render()
     {
         $cometidos = Cometido::where('user_solicita_id','=', auth()->user()->id )
-        ->where('objetivo', 'LIKE', '%' . $this->search . '%');
+        ->where('objetivo', 'LIKE', '%' . $this->search . '%')
+        ->paginate(10);
         
         return view('livewire.cometido.cometidos-index', compact('cometidos'));
     }

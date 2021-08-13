@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\cometidoAceptado;
+use App\Mail\cometidoRechazado;
 use App\Models\Automovil;
 use App\Models\Cometido;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class CometidoController extends Controller
 {
@@ -35,7 +39,7 @@ class CometidoController extends Controller
         return view('admin.cometido.admin'/*, compact('cometidos')*/);
     }
 
-        /**
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -64,7 +68,7 @@ class CometidoController extends Controller
      */
     public function show(Cometido $cometido)
     {
-    return view('admin.cometido.show'/*, compact('cometidos')*/);
+        return view('admin.cometido.show'/*, compact('cometidos')*/);
     }
 
     /**
@@ -75,7 +79,8 @@ class CometidoController extends Controller
      */
     public function edit(Cometido $cometido)
     {
-    return view('admin.cometido.edit'/*, compact('cometidos')*/);
+        //return $cometido;
+        return view('admin.cometido.edit'/*, compact('cometidos')*/);
     }
 
     /**
@@ -107,7 +112,7 @@ class CometidoController extends Controller
         $cometido->estado = '3';
         $cometido->progreso = 'Cancelado por el Solicitante';
         $cometido->save();
-        
+
         return redirect()->route('admin.cometidos.index')->with('info', 'El Cometido se Cancelo correctamente');
     }
 
@@ -117,7 +122,7 @@ class CometidoController extends Controller
         $cometido->estado = '3';
         $cometido->progreso = 'Rechazado por el Jefe del departamento';
         $cometido->save();
-        
+
         return redirect()->route('admin.cometidos.jefe')->with('info', 'El Cometido se Rechazo correctamente');
     }
 
@@ -127,7 +132,7 @@ class CometidoController extends Controller
         $cometido->estado = '1';
         $cometido->progreso = 'Autotizado por el Jefe del departamento';
         $cometido->save();
-        
+
         return redirect()->route('admin.cometidos.jefe')->with('info', 'El Cometido se Autorizo correctamente');
     }
 
@@ -137,24 +142,43 @@ class CometidoController extends Controller
         $cometido->estado = '3';
         $cometido->progreso = 'El administrador denego por falta de disponivilidad de veiculos';
         $cometido->save();
-        
+
+        $user = User::find($cometido->user_solicita_id);
+
+        $correo = new cometidoRechazado;
+        Mail::to($user->email)->send($correo);
+        //return "mensaje Enviado";
+
         return redirect()->route('admin.cometidos.admin')->with('info', 'Se denego correctamente');
     }
 
     public function asignar(Cometido $cometido)
     {
+        //return $cometido;
         $automovil = Automovil::Where('estado', '=', '1')->Where('libre', '=', '1')->pluck('patente', 'id');
-        
+
         return view('admin.cometido.selectautomovil', compact('cometido', 'automovil'));
     }
 
-    public function selectautomovil($request, Automovil $automovil)
+    public function selectautomovil(Request $request, $id)
     {
-        $cometido = Cometido::findOrFail($request->id);
+        //return $id;
+        //return $request;
+        $cometido = Cometido::findOrFail($id);
         $cometido->estado = '2';
-        $cometido->automovil_id = $automovil->id;
+        $cometido->automovil_id = $request->automovil_id;
         $cometido->progreso = 'El administrador asigno veiculo para el cometido';
         $cometido->save();
+
+        $automovil = Automovil::findOrFail($request->automovil_id);
+        $automovil->libre = '0';
+        $automovil->save();
+
+        $user = User::find($cometido->user_solicita_id);
+
+        $correo = new cometidoAceptado;
+        Mail::to($user->email)->send($correo);
+        //return "mensaje Enviado";
 
         return redirect()->route('admin.cometidos.admin')->with('info', 'Veiculo se asigno correctamente');
     }
@@ -166,11 +190,10 @@ class CometidoController extends Controller
         $cometido->progreso = 'Finalizado';
         $cometido->save();
 
-        $automovil = Automovil::findOrFail($request->automovil_id);
+        $automovil = Automovil::findOrFail($cometido->automovil_id);
         $automovil->libre = '1';
         $automovil->save();
-        
-        return redirect()->route('admin.cometidos.admin')->with('info', 'Veiculo se libero correctamente');
-    }
 
+        return view('admin.cometido.admin')->with('info', 'Veiculo se libero correctamente');
+    }
 }

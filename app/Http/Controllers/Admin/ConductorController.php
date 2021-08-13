@@ -92,7 +92,7 @@ class ConductorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Automovil $conductor)
+    public function update(Request $request, Conductor $conductor)
     {
         $request->validate([
             'tipo_licencia' => ['required', 'string','max:255'],
