@@ -20,7 +20,7 @@ class CometidoController extends Controller
      */
     public function index()
     {
-        //$cometidos = Cometido::all()->where('user_solicita_id','=', auth()->user()->id );
+        $cometidos = Cometido::all()->where('user_solicita_id','=', auth()->user()->id );
 
         return view('admin.cometido.index'/*, compact('cometidos')*/);
     }
@@ -57,7 +57,32 @@ class CometidoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'fecha_emision' => ['date_equals:date'],
+            'fecha_inicio' => ['required', 'date'],
+            'fecha_termino' => ['required', 'date'],
+            'objetivo'=> ['required', 'string', 'max:255'],
+            'dias_c_pernoctar'=> ['required', 'string','max:2'],
+            'dias_s_pernoctar'=> ['required', 'string','max:2'],
+            'tipo_transporte_ida' => ['required', 'integer'],
+            'tipo_transporte_regreso' => ['required', 'integer'],
+            'estado'=> ['integer:0'],
+            'item_presipuestario_id'=> ['required', 'integer'],
+               
+               
+        ],
+        [
+            'required' => 'Este campo no puede quedar Vacio',
+            'patente.unique' => 'Ya existe un automovil con dicha patente'
+        ]);
+
+        Cometido::create($request->all());
+
+        //$automovils = Automovil::all();
+
+        return redirect()->route('admin.cometidos.index'/*, $automovils*/)->with('info', 'El Cometido se creo correctamente');
+
+        //return $request->all();
     }
 
     /**
