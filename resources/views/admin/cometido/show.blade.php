@@ -72,13 +72,29 @@
                 <h5>Trasporta de ida: </h5>
             </div>
             <div class="col-3">
-                <h5>{{$cometido['tipo_transporte_ida']}}</h5>
+                @if ($cometido->tipo_transporte_ida == '1')
+                <h5> Auto</h5>
+                @endif
+                @if ($cometido->tipo_transporte_ida == '2')
+                <h5> Camioneta</h5>
+                @endif
+                @if ($cometido->tipo_transporte_ida == '3')
+                <h5> Camion</h5>
+                @endif
             </div>
             <div class="col-3">
                 <h5>Transporte de regreso: </h5>
             </div>
             <div class="col-3">
-                <h5>{{$cometido['tipo_transporte_regreso']}}</h5>
+                @if ($cometido->tipo_transporte_regreso == '1')
+                <h5> Auto</h5>
+                @endif
+                @if ($cometido->tipo_transporte_regreso == '2')
+                <h5> Camioneta</h5>
+                @endif
+                @if ($cometido->tipo_transporte_regreso == '3')
+                <h5> Camion</h5>
+                @endif
             </div>
         </div>
         <br>
@@ -106,7 +122,7 @@
     <div class="card">
         @if($localidades)
         <div class="card-body">
-        <h1>Detalles localidades visitadas</h1>
+            <h1>Detalles localidades visitadas</h1>
             <table class="table table-striped">
                 <thead class="text-center">
                     <tr>
@@ -128,52 +144,52 @@
             </table>
         </div>
         @endif
-    <div class="card">
-        @if($jefe)
-        <div class="card-body">
-        <h1>Detalles del jefe</h1>
-            <table class="table table-striped">
-                <thead class="text-center">
-                    <tr>
-                        <th scope="col">Rut</th>
-                        <th scope="col">Nombres</th>
-                        <th scope="col">Apellido Paterno</th>
-                        <th scope="col">Apellido Materno</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Direccion</th>
-                        <th scope="col">Grado</th>
-                        <th scope="col">Cargo</th>
-                    </tr>
-                </thead>
-                <tbody class="text-center">
-                    @foreach ($jefe as $jefe)
-                    <tr>
-                        <td>{{$jefe->rut}}</td>
-                        <td>{{$jefe->name}}</td>
-                        <td>{{$jefe->apellido_P}}</td>
-                        <td>{{$jefe->apellido_M}}</td>
-                        <td>{{$jefe->email}}</td>
-                        <td>{{$jefe->direccion}}</td>
-                        <td>{{$jefe->grado}}</td>
-                        <td>{{$jefe->nombre_cargo}}</td>
-                    </tr>
-                    @endforeach
+        <div class="card">
+            @if($jefe)
+            <div class="card-body">
+                <h1>Detalles del jefe</h1>
+                <table class="table table-striped">
+                    <thead class="text-center">
+                        <tr>
+                            <th scope="col">Rut</th>
+                            <th scope="col">Nombres</th>
+                            <th scope="col">Apellido Paterno</th>
+                            <th scope="col">Apellido Materno</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Direccion</th>
+                            <th scope="col">Grado</th>
+                            <th scope="col">Cargo</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        @foreach ($jefe as $jefe)
+                        <tr>
+                            <td>{{$jefe->rut}}</td>
+                            <td>{{$jefe->name}}</td>
+                            <td>{{$jefe->apellido_P}}</td>
+                            <td>{{$jefe->apellido_M}}</td>
+                            <td>{{$jefe->email}}</td>
+                            <td>{{$jefe->direccion}}</td>
+                            <td>{{$jefe->grado}}</td>
+                            <td>{{$jefe->nombre_cargo}}</td>
+                        </tr>
+                        @endforeach
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
+            @endif
         </div>
-        @endif
     </div>
-</div>
 
-@stop
+    @stop
 
-@section('css')
-<link rel="stylesheet" href="/css/admin_custom.css">
-@stop
+    @section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    @stop
 
-@section('js')
-<script>
-    console.log('Hi!');
-</script>
-@stop
+    @section('js')
+    <script>
+        console.log('Hi!');
+    </script>
+    @stop
