@@ -12,6 +12,9 @@ use App\Http\Controllers\Admin\UserController;
 
 use App\Mail\cometidoAceptado;
 use App\Mail\cometidoRechazado;
+use App\Models\Ciudad;
+use App\Models\Ciudad_cometido;
+use App\Models\Provincia;
 use Illuminate\Support\Facades\Mail;
 
 Route::get('', [HomeController::class, 'index'])->name('admin.home');
@@ -61,6 +64,9 @@ Route::put('cometidos/{id}/selectautomovil', [cometidoController::class, 'select
 Route::put('cometidos/{id}/liberar', [cometidoController::class, 'liberar'])->name('admin.cometidos.liberar');
 Route::get('cometidos/admin/index', [cometidoController::class, 'admin'])->name('admin.cometidos.admin');
 
+// agregar localidad a cometido
+Route::resource('ciudad_cometidos', Ciudad_cometidoController::class)->names('admin.ciudad_cometidos');
+
 /*Route::get('users', [UserController::class, 'index'])->name('admin.index');*/
 
 // prueba envio de correos
@@ -73,4 +79,14 @@ Route::get('rechazado', function(){
     $correo = new cometidoRechazado;
     Mail::to('hoappy.py@gmail.com')->send($correo);
     return "mensaje Enviado";
+ });
+
+ //get ciudades y provincias
+
+ Route::get('/getciudades', function($id) {
+    dd(Ciudad::all()->Where('provincia_id', '=', $id)->pluck('nombre_ciudad', 'id'));
+ });
+
+ Route::get('/getprovincias', function($id) {
+    dd(Provincia::all()->Where('region_id', '=', $id)->pluck('nombre_provincia', 'id'));
  });

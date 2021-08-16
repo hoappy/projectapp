@@ -17,6 +17,11 @@ class Item_presupuestario extends Model
         
     ];
 
+    public function getFullNameAttribute()
+    {
+        return "{$this->nombre_item_presupuestario} {$this->valor}";
+    }
+
     public function posts(){
         return $this->hasMany(Post::class);
     }

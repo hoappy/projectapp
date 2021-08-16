@@ -43,6 +43,10 @@ class User extends Authenticatable
 
     ];
 
+    public function getFullNameAttribute()
+    {
+        return "{$this->name} {$this->apellido_P} {$this->apellido_M} - {$this->rut}";
+    }
     /**
      * The attributes that should be hidden for arrays.
      *

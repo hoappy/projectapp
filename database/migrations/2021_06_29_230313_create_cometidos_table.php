@@ -28,11 +28,11 @@ class CreateCometidosTable extends Migration
 
             $table->enum('estado',[0, 1, 2, 3])->default(0);
 
-            $table->unsignedBigInteger('automovil_id');
+            $table->unsignedBigInteger('automovil_id')->nullable();
             $table->unsignedBigInteger('item_presupuestario_id');
             $table->unsignedBigInteger('user_solicita_id');
             $table->unsignedBigInteger('user_jefe_id');
-            $table->unsignedBigInteger('user_aprueba_id');
+            $table->unsignedBigInteger('user_aprueba_id')->nullable();
 
             $table->foreign('automovil_id')->references('id')->on('automovils')->onDelete('cascade');
             $table->foreign('item_presupuestario_id')->references('id')->on('item_presupuestarios')->onDelete('cascade');

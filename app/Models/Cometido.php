@@ -20,7 +20,7 @@ class Cometido extends Model
         'tipo_transporte_regreso',
         'progreso',
         'estado',
-        'item_presipuestario_id',
+        'item_presupuestario_id',
         'user_solicita_id',
         'user_jefe_id',
         'user_aprueba_id',

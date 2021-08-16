@@ -6,9 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Mail\cometidoAceptado;
 use App\Mail\cometidoRechazado;
 use App\Models\Automovil;
+use App\Models\Ciudad;
 use App\Models\Cometido;
+use App\Models\Item_presupuestario;
+use App\Models\Provincia;
+use App\Models\Region;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class CometidoController extends Controller
@@ -46,7 +52,15 @@ class CometidoController extends Controller
      */
     public function create()
     {
-        return view('admin.cometido.create');
+        $jefe = User::join('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
+        ->where('model_has_roles.role_id', '=', 2)
+        ->get()
+        ->pluck('full_name', 'id');
+
+        $item = Item_presupuestario::all()->Where('estado', '=', '1')
+        ->pluck('full_name', 'id');
+
+        return view('admin.cometido.create', compact('item', 'jefe'));
     }
 
     /**
@@ -58,7 +72,6 @@ class CometidoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'fecha_emision' => ['date_equals:date'],
             'fecha_inicio' => ['required', 'date'],
             'fecha_termino' => ['required', 'date'],
             'objetivo'=> ['required', 'string', 'max:255'],
@@ -66,23 +79,35 @@ class CometidoController extends Controller
             'dias_s_pernoctar'=> ['required', 'string','max:2'],
             'tipo_transporte_ida' => ['required', 'integer'],
             'tipo_transporte_regreso' => ['required', 'integer'],
-            'estado'=> ['integer:0'],
-            'item_presipuestario_id'=> ['required', 'integer'],
-               
+            'item_presupuestario_id'=> ['required', 'integer'],
+            'user_jefe_id'=> ['required', 'integer'],
                
         ],
         [
             'required' => 'Este campo no puede quedar Vacio',
-            'patente.unique' => 'Ya existe un automovil con dicha patente'
+            
         ]);
+        $cometido = Cometido::create([
+            'fecha_inicio' => $request['fecha_inicio'],
+            'fecha_termino' => $request['fecha_termino'],
 
-        Cometido::create($request->all());
+            'objetivo' => $request['objetivo'],
 
-        //$automovils = Automovil::all();
+            'dias_c_pernoctar' => $request['dias_c_pernoctar'],
+            'dias_s_pernoctar' => $request['dias_s_pernoctar'],
+            'direccion' => $request['direccion'],
+            'tipo_transporte_ida' => $request['tipo_transporte_ida'],
+            'tipo_transporte_regreso' => $request['tipo_transporte_regreso'],
+            'item_presupuestario_id' => $request['item_presupuestario_id'],
+            'user_jefe_id' => $request['user_jefe_id'],
+            'fecha_emicion' => Carbon::now(),
 
-        return redirect()->route('admin.cometidos.index'/*, $automovils*/)->with('info', 'El Cometido se creo correctamente');
+            'progreso' => 'Solicitud Ingresada',
 
-        //return $request->all();
+            'user_solicita_id' => Auth::user()->id,
+        ]);
+        
+        return view('admin.cometido.localidad', compact('cometido'));
     }
 
     /**

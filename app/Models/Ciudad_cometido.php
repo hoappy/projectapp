@@ -9,6 +9,10 @@ class Ciudad_cometido extends Model
 {
     use HasFactory;
 
-    
+    protected $fillable = [
+        'ciudad_id',
+        'cometido_id',
+
+    ];
 
 }

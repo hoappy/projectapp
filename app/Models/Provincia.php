@@ -9,6 +9,13 @@ class Provincia extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'nombre_provincia',
+        'estado',
+        'region_id',
+        
+    ];
+
     public function posts(){
         return $this->hasMany(Post::class);
     }

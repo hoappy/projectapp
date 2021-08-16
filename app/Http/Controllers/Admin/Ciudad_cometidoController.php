@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Ciudad;
 use App\Models\Ciudad_cometido;
+use App\Models\Cometido;
+use App\Models\Provincia;
+use App\Models\Region;
 use Illuminate\Http\Request;
 
 class Ciudad_cometidoController extends Controller
@@ -15,9 +19,7 @@ class Ciudad_cometidoController extends Controller
      */
     public function index()
     {
-        $ciudad_cometidos = Ciudad_cometido::all();
-
-        return view('admin.ciudad_cometido.index', compact('ciudad_cometidos'));
+        return redirect()->route('admin.cometidos.index');
     }
 
     /**
@@ -25,9 +27,10 @@ class Ciudad_cometidoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Cometido $cometido, Request $request)
     {
-        return view('admin.ciudad_cometido.create');
+
+        return view('admin.cometido.localidad', compact('cometido'));
     }
 
     /**
@@ -36,9 +39,23 @@ class Ciudad_cometidoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Cometido $cometido, Request $request)
     {
-        //
+        $request->validate([
+            'ciudad_id' => ['required', 'integer'],
+            'cometido_id' => ['required', 'integer'],
+        ]);
+        
+        $ciudadcometido = Ciudad_cometido::create([
+            'ciudad_id' => $request['ciudad_id'],
+            'cometido_id' => $request['cometido_id'],
+        ]);
+        if($request->submitbutton === 'Siguiente (Agregar Localidad)'){
+            $cometido = Cometido::find($request->cometido_id);
+            return view('admin.cometido.localidad', compact('cometido'));
+        }else{
+            return redirect()->route('admin.cometidos.index')->with('info', 'El Cometido se creo correctamente');
+        }
     }
 
     /**
@@ -49,7 +66,7 @@ class Ciudad_cometidoController extends Controller
      */
     public function show($id)
     {
-    return view('admin.ciudad_cometido.show'/*, compact('ciudad_cometidos')*/);
+        return view('admin.ciudad_cometido.show'/*, compact('ciudad_cometidos')*/);
     }
 
     /**
@@ -60,7 +77,7 @@ class Ciudad_cometidoController extends Controller
      */
     public function edit($id)
     {
-    return view('admin.ciudad_cometido.edit'/*, compact('ciudad_cometidos')*/);
+        return view('admin.ciudad_cometido.edit'/*, compact('ciudad_cometidos')*/);
     }
 
     /**
@@ -70,10 +87,6 @@ class Ciudad_cometidoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
