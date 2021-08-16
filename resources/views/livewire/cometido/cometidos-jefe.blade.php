@@ -9,10 +9,13 @@
                         <thead class="text-center">
                         <tr>
                             
-                            <th scope="col">Estado</th>
+                            
                             <th scope="col">Fecha Inicio</th>
                             <th scope="col">Fecha Termino</th>
                             <th scope="col">Objetivo</th>
+                            <th scope="col">Detalles</th>
+                            <th scope="col">Autorizar</th>
+                            <th scope="col">Rechazar</th>
                             
                         </tr>
                         </thead>

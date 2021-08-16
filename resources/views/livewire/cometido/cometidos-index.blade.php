@@ -13,6 +13,8 @@
                             <th scope="col">Fecha Inicio</th>
                             <th scope="col">Fecha Termino</th>
                             <th scope="col">Objetivo</th>
+                            <th scope="col">Detalles</th>
+                            <th scope="col">Cancelar</th>
                             
                         </tr>
                         </thead>
