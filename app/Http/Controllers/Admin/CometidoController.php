@@ -118,7 +118,21 @@ class CometidoController extends Controller
      */
     public function show(Cometido $cometido)
     {
-        return view('admin.cometido.show'/*, compact('cometidos')*/);
+        $localidades = Ciudad::join('ciudad_cometidos', 'ciudads.id', '=', 'ciudad_cometidos.ciudad_id')
+        ->join('provincias', 'ciudads.provincia_id', '=', 'provincias.id')
+        ->join('regions', 'provincias.region_id', '=', 'regions.id')
+        ->where('ciudad_cometidos.id', '=', $cometido->id)
+        ->get();
+
+        $item = Item_presupuestario::join('cometidos', 'cometidos.item_presupuestario_id', '=', 'item_presupuestarios.id')
+        ->where('cometidos.id', '=', $cometido->id)
+        ->get();
+        
+        $jefe = User::join('cometidos', 'cometidos.user_jefe_id', '=', 'users.id')
+        ->where('cometidos.id', '=', $cometido->id)
+        ->get();
+
+        return view('admin.cometido.show', compact('cometido', 'localidades', 'item'));
     }
 
     /**

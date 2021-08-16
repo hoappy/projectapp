@@ -24,8 +24,6 @@ class Cometido extends Model
         'user_solicita_id',
         'user_jefe_id',
         'user_aprueba_id',
-        
-
     ];
 
 
