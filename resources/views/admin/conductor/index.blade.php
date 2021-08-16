@@ -26,9 +26,9 @@
                     <th scope="col">Años de experiencia</th>
                     
                     
-                    <th scope="col">Detalles</th>
+                    {{-- <th scope="col">Detalles</th> --}}
                     <th scope="col">Editar</th>
-                    <th scope="col">Eliminar</th>
+                    <th scope="col">Desactivar</th>
                     
                 </tr>
                 </thead>
@@ -48,17 +48,17 @@
 
                     
 
-                    <td width="10px"> 
+                    {{-- <td width="10px"> 
                         <a class="btn btn-primary btn-sm" href="{{route('admin.conductors.show', $conductor)}}">Detalles</a>
-                    </td>
+                    </td> --}}
                     <td width="10px">
-                        <a class="btn btn-success btn-sm" href="{{route('admin.conductors.edit', $conductor)}}">Editar</a>
+                        <a class="btn btn-primary btn-sm" href="{{route('admin.conductors.edit', $conductor)}}">Editar</a>
                     </td>
                     <td width="10px">
                         <form href="{{route('admin.conductors.destroy', $conductor)}}" method="POST">
                             @csrf
                             @method('delete')
-                            <button tupe="submit" class="btn btn-danger btn-sm" >Eliminar</button>
+                            <button tupe="submit" class="btn btn-danger btn-sm" >Desactivar</button>
                         </form>
                     </td>
                     

@@ -26,6 +26,9 @@
                     <th scope="col">Nombre</th>
                     <th scope="col">Descripcion</th>
                     <th scope="col">Valor</th>
+
+                    <th scope="col">Editar</th>
+                    <th scope="col">Desactivar</th>
                 </tr>
                 </thead>
                 <tbody class="text-center">

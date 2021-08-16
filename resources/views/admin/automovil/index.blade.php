@@ -28,9 +28,9 @@
                     <th scope="col">Tipo Automovil</th>
                     <th scope="col">Patente</th>
                     
-                    <th scope="col">Detalles</th>
+                    {{-- <th scope="col">Detalles</th> --}}
                     <th scope="col">Editar</th>
-                    <th scope="col">Eliminar</th>
+                    <th scope="col">Desactivar</th>
                     
                 </tr>
                 </thead>
@@ -48,9 +48,9 @@
                                 <td width="10px"> 
                                     <a class="btn btn-primary btn-sm" href="{{route('admin.automovils.show', $automovil)}}">Detalles</a>
                                 </td>
-                                <td width="10px">
+                                {{-- <td width="10px">
                                     <a class="btn btn-success btn-sm" href="{{route('admin.automovils.edit', $automovil)}}">Editar</a>
-                                </td>
+                                </td> --}}
                                 <td width="10px">
                                     <!--<form href="{{route('admin.automovils.destroy', $automovil)}}" method="POST">
                                         @csrf

@@ -24,8 +24,8 @@
                     <th scope="col">Nombre</th>
                     <th scope="col">Direccion</th>
                                         
-                    <th scope="col">Detalles</th>
                     <th scope="col">Editar</th>
+                    <th scope="col">Desactivar</th>
                     {{-- <th scope="col">Eliminar</th> --}}
                     
                 </tr>

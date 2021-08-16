@@ -16,6 +16,8 @@
                             <th scope="col">Direccion</th>
                             <th scope="col">Grado</th>
                             <th scope="col">Cargo</th>
+                            <th scope="col">Rol</th>
+                            <th scope="col">Editar</th>
                             
                             <!--<th scope="col">Detalles</th>
                             <th scope="col">Editar</th>
@@ -43,13 +45,13 @@
                                 @can('admin.user.roleasig')
                                 @endcan
                                 
-                                    <td width="10px"> 
+                                    {{-- <td width="10px"> 
                                         <a class="btn btn-primary btn-sm" href="{{route('admin.users.show', $user)}}">Detalles</a>
-                                    </td>
+                                    </td> --}}
                                 
                                 @can('admin.user.edit')
                                     <td width="10px">
-                                        <a class="btn btn-success btn-sm" href="{{route('admin.users.edit', $user)}}">Editar</a>
+                                        <a class="btn btn-primary btn-sm" href="{{route('admin.users.edit', $user)}}">Editar</a>
                                     </td>
                                 @endcan
                                 @can('admin.user.destroy')
