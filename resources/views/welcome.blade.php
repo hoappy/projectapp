@@ -1,6 +1,10 @@
 <x-app-layout>
-
-    esete es el home
+    <div class="conatiner">
+        <h1>Bienvenido al Portal</h1>
+    <br>
+    <P>Por favor ingrese en el sistema</P>
+    </div>
+    
 
 </x-app-layout>
 
